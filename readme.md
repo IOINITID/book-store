@@ -1,4 +1,4 @@
-Название: **Book Store**
+Название: **Book Store** [![Build Status](https://travis-ci.com/IOINITID/book-store.svg?branch=master)](https://travis-ci.com/IOINITID/book-store)
 
 ------------
 
