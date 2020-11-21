@@ -1,5 +1,5 @@
 import React from 'react';
-import './book-list-item.scss';
+import './book-list-item.css';
 
 const BookListItem = (props) => {
     const { book, onAddedToCart } = props;
