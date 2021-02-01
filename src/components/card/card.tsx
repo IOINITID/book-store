@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './card.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import RatingIcon from '../../assets/images/rating-icon.svg';
 
 const Card = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/IOINITID/book-store/master/src/assets/api/data.json')
+      .then((response) => response.json())
+      .then((data) => setBooks(data));
+  }, []);
+
+  console.log(books);
+
   return (
     <div className={styles['card']}>
       <div className={styles['cover']}>
