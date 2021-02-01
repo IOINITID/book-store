@@ -1,87 +1,102 @@
-const path = require(`path`);
-const outputPath = path.join(__dirname, `public`);
+const path = require('path');
+const outputPath = path.join(__dirname, 'dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: './src/index.tsx',
   output: {
-    filename: `scripts/scripts.js`,
-    path: outputPath
+    filename: 'scripts/scripts.js',
+    path: outputPath,
   },
   devServer: {
     contentBase: outputPath,
     open: true,
     inline: true,
-    port: 1337
+    port: 1337,
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: `babel-loader`
-        }
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        loader: 'ts-loader',
       },
       {
         test: /\.(css|scss)$/,
-        use: [`style-loader`, `css-loader`,
+        use: [
+          'style-loader',
           {
-            loader: `postcss-loader`,
+            loader: 'css-loader',
             options: {
-              postcssOptions: {
-                plugins: [
-                  ['autoprefixer']
-                ]
-              }
-            }
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
           },
           {
-            loader: `sass-loader`,
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['autoprefixer']],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
             options: {
               sassOptions: {
-                outputStyle: 'compressed'
-              }
-            }
-          }
-        ]
+                outputStyle: 'compressed',
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
         use: {
-          loader: `@svgr/webpack`,
+          loader: '@svgr/webpack',
           options: {
-            svgo: false
-          }
-        }
+            svgo: false,
+          },
+        },
       },
       {
         test: /favicon.svg$/,
         use: {
-          loader: `file-loader`,
+          loader: 'file-loader',
           options: {
-            name: 'images/[name].[ext]'
-          }
-        }
+            name: 'images/[name].[ext]',
+          },
+        },
       },
       {
         test: /\.(woff2|woff|ttf)$/,
         use: {
-          loader: `file-loader`,
+          loader: 'file-loader',
           options: {
-            name: 'fonts/[name].[ext]'
-          }
-        }
-      }
-    ]
+            name: 'fonts/[name].[ext]',
+          },
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', 'json', 'css', 'scss'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: false,
-      template: `./src/index.html`,
-      filename: `index.html`
-    })
+      template: './src/index.html',
+      filename: 'index.html',
+    }),
   ],
-  devtool: `source-map`
+  devtool: 'source-map',
 };
