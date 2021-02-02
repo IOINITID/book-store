@@ -28,7 +28,7 @@ const BookCover = (props: IBookCover) => {
       />
       <div className={styles['rating']}>
         <RatingIcon className={styles['rating-icon']} width="8" height="8" />
-        <span className={styles['rating-item']}>{rating}</span>
+        <span className={styles['rating-item']}>{rating.toFixed(1)}</span>
       </div>
     </div>
   );
