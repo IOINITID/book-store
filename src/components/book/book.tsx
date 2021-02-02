@@ -3,21 +3,15 @@ import styles from './book.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import BookCover from '../book-cover/book-cover';
 
-interface IBookCover {
-  title: string;
-  image: string;
-  rating: number;
-}
-
 interface IBook {
   book: {
     title: string;
     author: string;
-    publishing: string;
+    publisher: string;
     release: number;
     pages: number;
     cover: string;
-    limitation: number;
+    age: number;
     image: string;
     rating: number;
     price: number;
@@ -28,7 +22,7 @@ interface IBook {
 
 const Book = (props: IBook) => {
   const {
-    book: { title, author, publishing, release, pages, cover, limitation, image, rating, price, genres, description },
+    book: { title, author, publisher, release, pages, cover, age, image, rating, price, genres, description },
   } = props;
 
   const genresItems = genres.map((item, index) => {
@@ -39,7 +33,7 @@ const Book = (props: IBook) => {
     );
   });
 
-  const bookCover: IBookCover = { title, image, rating };
+  const bookCover = { title, image, rating };
 
   return (
     <div className={styles['book']}>

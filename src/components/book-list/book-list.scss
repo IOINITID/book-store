@@ -1,3 +1,9 @@
-.container {
-  display: block;
+@import '../../assets//styles//mixins.scss';
+
+.book-list {
+  @include list-reset;
+}
+
+.book-item {
+  margin: 0;
 }

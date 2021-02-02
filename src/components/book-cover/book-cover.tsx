@@ -24,7 +24,7 @@ const BookCover = (props: IBookCover) => {
         width="136"
         height="160"
         loading="lazy"
-        alt={`${title}.`}
+        alt={`Обложка книги ${title}.`}
       />
       <div className={styles['rating']}>
         <RatingIcon className={styles['rating-icon']} width="8" height="8" />
