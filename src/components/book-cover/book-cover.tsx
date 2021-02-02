@@ -19,8 +19,7 @@ const BookCover = (props: IBookCover) => {
     <div className={styles['cover']}>
       <img
         className={styles['image']}
-        src={`images/${image}@1x.jpg`}
-        srcSet={`images/${image}@1x.jpg 1x, images/${image}@2x.jpg 2x`}
+        src={`images/${image}.jpg`}
         width="136"
         height="160"
         loading="lazy"
