@@ -1,11 +1,14 @@
 [
   {
+    "id": "1",
     "title": "Сумерки",
     "author": "Стефани Майер",
     "publishing": "Sukutangan",
     "release": 2020,
     "pages": 448,
     "cover": "Мягкая обложка",
+    "image": "twilight",
+    "rating": 4.8,
     "limitation": 16,
     "price": 413,
     "genres": ["Романтика", "Мистика"],
