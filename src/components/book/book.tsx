@@ -27,13 +27,11 @@ const Book = (props: IBook) => {
   } = props;
 
   const genresItems = genres.map((item, index) => {
-    const style = {
-      backgroundColor: getColorByGenre(item),
-    };
+    const background = getColorByGenre(item);
 
     return (
       <li className={styles['genre-item']} key={item + index}>
-        <span className={styles['genre']} style={style}>
+        <span className={styles['genre']} style={{ backgroundColor: background }}>
           {item}
         </span>
       </li>
