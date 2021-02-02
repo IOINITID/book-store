@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './book.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import BookCover from '../book-cover/book-cover';
+import { getColorByGenre } from '../../utils/common';
 
 interface IBook {
   book: {
@@ -26,9 +27,15 @@ const Book = (props: IBook) => {
   } = props;
 
   const genresItems = genres.map((item, index) => {
+    const style = {
+      backgroundColor: getColorByGenre(item),
+    };
+
     return (
       <li className={styles['genre-item']} key={item + index}>
-        <span className={styles['genre']}>{item}</span>
+        <span className={styles['genre']} style={style}>
+          {item}
+        </span>
       </li>
     );
   });
@@ -43,7 +50,7 @@ const Book = (props: IBook) => {
         <p className={styles['author']}>{author}</p>
         <ul className={styles['genre-list']}>{genresItems}</ul>
         <div className={styles['cart']}>
-          <span className={styles['price']}>{price} ₽</span>
+          <span className={styles['price']}>{price.toLocaleString()} ₽</span>
           <button className={styles['button-buy']} type="button" title="Добавить в корзину">
             <CartIcon width="12" height="13" />
           </button>
