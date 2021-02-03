@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './book-cover.scss';
-import BookRating from '../book-rating/book-rating';
+import RatingIcon from '../../assets/images/rating-icon.svg';
 
 interface IBookCover {
   bookCover: {
@@ -25,7 +25,10 @@ const BookCover = (props: IBookCover) => {
         loading="lazy"
         alt={`Обложка книги ${title}.`}
       />
-      <BookRating rating={rating} />
+      <div className={styles['rating']}>
+        <RatingIcon className={styles['rating-icon']} width="8" height="8" />
+        <span className={styles['rating-item']}>{rating.toFixed(1)}</span>
+      </div>
     </div>
   );
 };
