@@ -2,15 +2,7 @@ import React from 'react';
 import styles from './book-info.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import { getColorByGenre } from '../../utils/common';
-
-interface IBookInfo {
-  bookInfo: {
-    title: string;
-    author: string;
-    price: number;
-    genres: string[];
-  };
-}
+import { IBookInfo } from '../../interfaces/index';
 
 const BookInfo = (props: IBookInfo) => {
   const {
