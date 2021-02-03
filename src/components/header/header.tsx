@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <a className="header__logo" href="/">
+        <a className="header__logo" href="#ref">
           <LogoIcon className="header__logo-icon" />
         </a>
         <form className="form" action="#">

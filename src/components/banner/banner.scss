@@ -1,0 +1,21 @@
+.banner {
+  width: 100%;
+  max-width: 1312px;
+  height: 320px;
+  max-height: 320px;
+  margin-bottom: 8px;
+  background: #da6551;
+  border-radius: 16px;
+}
+
+.banner-container .swiper-container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 1312px;
+  margin: 0 auto 16px auto;
+  padding: 0;
+}
+
+.banner-container .swiper-pagination {
+  justify-content: center;
+}

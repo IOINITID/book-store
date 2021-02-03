@@ -51,3 +51,22 @@
 .swiper-button-next-icon {
   transform: rotate(180deg);
 }
+
+.swiper-pagination {
+  display: flex;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #bbbbbb;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet:not(:last-child) {
+  margin-right: 6px;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #5e5e5e;
+}
