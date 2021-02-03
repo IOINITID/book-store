@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './book-cover.scss';
+import './book-cover.scss';
 import BookRating from '../book-rating/book-rating';
 import { IBookCover } from '../../interfaces/index';
 
@@ -9,9 +9,9 @@ const BookCover = (props: IBookCover) => {
   } = props;
 
   return (
-    <div className={styles['cover']}>
+    <div className="cover">
       <img
-        className={styles['image']}
+        className="image"
         src={`images/${image}.jpg`}
         width="136"
         height="160"

@@ -1,10 +1,10 @@
 import React from 'react';
 import BookList from '../book-list/book-list';
-import styles from './app.scss';
+import './app.scss';
 
 const App = () => {
   return (
-    <div className={styles['container']}>
+    <div className="container">
       <BookList />
     </div>
   );

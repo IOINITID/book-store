@@ -1,0 +1,53 @@
+@import './mixins.scss';
+
+.swiper-slider {
+  position: relative;
+}
+
+.swiper-container {
+  width: 1344px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.swiper-wrapper {
+  @include list-reset;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 9px 13px 9px 11px;
+  background: #e9e7e7;
+  border: none;
+  border-radius: 16px;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 9px 11px 9px 13px;
+  background: #e9e7e7;
+  border: none;
+  border-radius: 16px;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.swiper-button-next-icon {
+  transform: rotate(180deg);
+}

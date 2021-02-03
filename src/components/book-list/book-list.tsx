@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Book from '../book/book';
-import styles from './book-list.scss';
+import './book-list.scss';
 import { booksUrl } from '../../utils/constants';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import 'swiper/swiper.scss';
+import ArrowIcon from '../../assets/images/arrow-icon.svg';
+
+SwiperCore.use([Navigation]);
 
 const BookList = () => {
   const [booksData, setBooksData] = useState([]);
@@ -16,13 +22,30 @@ const BookList = () => {
 
   const books = booksData.map((book) => {
     return (
-      <li className={styles['book-item']} key={book.id}>
+      <SwiperSlide className="book-item" key={book.id} tag="li">
         <Book book={book} />
-      </li>
+      </SwiperSlide>
     );
   });
 
-  return <ul className={styles['book-list']}>{books}</ul>;
+  return (
+    <Swiper
+      spaceBetween={32}
+      slidesPerView={4}
+      navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
+      wrapperTag="ul"
+      loop={true}
+      initialSlide={4}
+    >
+      {books}
+      <button className="swiper-button-prev">
+        <ArrowIcon className="swiper-button-prev-icon" />
+      </button>
+      <button className="swiper-button-next">
+        <ArrowIcon className="swiper-button-next-icon" />
+      </button>
+    </Swiper>
+  );
 };
 
 export default BookList;

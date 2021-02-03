@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './book.scss';
+import './book.scss';
 import BookCover from '../book-cover/book-cover';
 import BookInfo from '../book-info/book-info';
 import { IBook } from '../../interfaces/index';
@@ -10,7 +10,7 @@ const Book = (props: IBook) => {
   } = props;
 
   return (
-    <div className={styles['book']}>
+    <div className="book">
       <BookCover bookCover={{ title, image, rating }} />
       <BookInfo bookInfo={{ title, author, price, genres }} />
     </div>
