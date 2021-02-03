@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './book-cover.scss';
 import BookRating from '../book-rating/book-rating';
-import { IBookCover } from '../../interfaces/index';
+
+interface IBookCover {
+  bookCover: {
+    title: string;
+    image: string;
+    rating: number;
+  };
+}
 
 const BookCover = (props: IBookCover) => {
   const {
