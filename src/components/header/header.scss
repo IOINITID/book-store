@@ -22,11 +22,11 @@
 }
 
 .form {
+  position: relative;
   width: 536px;
 }
 
 .form__label {
-  position: relative;
   width: 100%;
 }
 
@@ -42,6 +42,7 @@
   background: #ffffff;
   border: none;
   border-radius: 4px;
+  outline: none;
   appearance: none;
 }
 
