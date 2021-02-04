@@ -1,17 +1,15 @@
 import React from 'react';
 import './header.scss';
-import LogoIcon from '../../assets/images/logo-icon.svg';
 import SearchIcon from '../../assets/images/search-icon.svg';
 import FavoriteIcon from '../../assets/images/favorite-icon.svg';
 import CartIcon from '../../assets/images/cart-icon.svg';
+import Logo from '../logo/logo';
 
 const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <a className="header__logo" href="#ref">
-          <LogoIcon className="header__logo-icon" />
-        </a>
+        <Logo />
         <form className="form" action="#">
           <label className="form__label" htmlFor="">
             <input className="form__search" type="search" placeholder="Искать книгу" />

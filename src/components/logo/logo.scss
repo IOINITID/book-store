@@ -1,0 +1,27 @@
+// .logo {
+// }
+
+.logo__icon {
+  width: 168px;
+  height: 24px;
+}
+
+@media (max-width: 1344px) {
+  // .logo {
+  // }
+
+  .logo__icon {
+    width: 136px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 704px) {
+  // .logo {
+  // }
+
+  .logo__icon {
+    width: 28px;
+    height: 21px;
+  }
+}

@@ -3,9 +3,10 @@ import './banner.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
+
 SwiperCore.use([Pagination, Autoplay]);
 
-const bannerImages = [
+const bannerData = [
   {
     title: 'Атомарный дизайн',
     image: 'atomic-design',
@@ -20,6 +21,24 @@ const bannerImages = [
   },
 ];
 
+const banners = bannerData.map((banner, index) => {
+  return (
+    <SwiperSlide key={banner.image + index}>
+      <div className="banner">
+        <picture>
+          <source media="(min-width: 1344px)" srcSet={`images/${banner.image}-banner-desktop.jpg`} />
+          <source media="(min-width: 704px)" srcSet={`images/${banner.image}-banner-tablet.jpg`} />
+          <img
+            className="banner__image"
+            src={`images/${banner.image}-banner-mobile.jpg`}
+            alt={`Баннер книги ${banner.title}.`}
+          />
+        </picture>
+      </div>
+    </SwiperSlide>
+  );
+});
+
 const Banner = () => {
   return (
     <div className="banner-container">
@@ -30,23 +49,7 @@ const Banner = () => {
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
       >
-        {bannerImages.map((item, index) => {
-          return (
-            <SwiperSlide key={item.image + index}>
-              <div className="banner">
-                <picture>
-                  <source media="(min-width: 1344px)" srcSet={`images/${item.image}-banner-desktop.jpg`} />
-                  <source media="(min-width: 704px)" srcSet={`images/${item.image}-banner-tablet.jpg`} />
-                  <img
-                    className="banner__image"
-                    src={`images/${item.image}-banner-mobile.jpg`}
-                    alt={`Баннер книги ${item.title}.`}
-                  />
-                </picture>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {banners}
       </Swiper>
     </div>
   );
