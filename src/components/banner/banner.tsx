@@ -7,15 +7,15 @@ SwiperCore.use([Pagination, Autoplay]);
 
 const bannerImages = [
   {
-    title: '',
+    title: 'Атомарный дизайн',
     image: 'atomic-design',
   },
   {
-    title: '',
+    title: 'Сумерки',
     image: 'twilight',
   },
   {
-    title: '',
+    title: '1984',
     image: '1984',
   },
 ];
@@ -30,36 +30,23 @@ const Banner = () => {
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
       >
-        <SwiperSlide>
-          <div className="banner">
-            <picture>
-              <source media="(min-width: 1344px)" srcSet="images/atomic-design-banner-desktop.jpg" />
-              <source media="(min-width: 704px)" srcSet="images/atomic-design-banner-tablet.jpg" />
-              <img className="banner__image" src="images/atomic-design-banner-mobile.jpg" alt="" />
-            </picture>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="banner">
-            <picture>
-              <source media="(min-width: 1344px)" srcSet="images/twilight-banner-desktop.jpg" />
-              <source media="(min-width: 704px)" srcSet="images/twilight-banner-tablet.jpg" />
-              <img className="banner__image" src="images/twilight-banner-mobile.jpg" alt="" />
-            </picture>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="banner">
-            <picture>
-              <source media="(min-width: 1344px)" srcSet="images/1984-banner-desktop.jpg" />
-              <source media="(min-width: 704px)" srcSet="images/1984-banner-tablet.jpg" />
-              <img className="banner__image" src="images/1984-banner-mobile.jpg" alt="" />
-            </picture>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="banner"></div>
-        </SwiperSlide>
+        {bannerImages.map((item, index) => {
+          return (
+            <SwiperSlide key={item.image + index}>
+              <div className="banner">
+                <picture>
+                  <source media="(min-width: 1344px)" srcSet={`images/${item.image}-banner-desktop.jpg`} />
+                  <source media="(min-width: 704px)" srcSet={`images/${item.image}-banner-tablet.jpg`} />
+                  <img
+                    className="banner__image"
+                    src={`images/${item.image}-banner-mobile.jpg`}
+                    alt={`Баннер книги ${item.title}.`}
+                  />
+                </picture>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
