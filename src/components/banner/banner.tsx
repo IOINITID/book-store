@@ -27,22 +27,34 @@ const Banner = () => {
         pagination={{ clickable: true }}
         slidesPerView={1}
         spaceBetween={0}
-        // autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
       >
         <SwiperSlide>
           <div className="banner">
-            <img className="banner__image" src="images/atomic-design-banner.jpg" alt="" />
+            <picture>
+              <source media="(min-width: 1344px)" srcSet="images/atomic-design-banner-desktop.jpg" />
+              <source media="(min-width: 704px)" srcSet="images/atomic-design-banner-tablet.jpg" />
+              <img className="banner__image" src="images/atomic-design-banner-mobile.jpg" alt="" />
+            </picture>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <img className="banner__image" src="images/twilight-banner.jpg" alt="" />
+            <picture>
+              <source media="(min-width: 1344px)" srcSet="images/twilight-banner-desktop.jpg" />
+              <source media="(min-width: 704px)" srcSet="images/twilight-banner-tablet.jpg" />
+              <img className="banner__image" src="images/twilight-banner-mobile.jpg" alt="" />
+            </picture>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <img className="banner__image" src="images/1984-banner.jpg" alt="" />
+            <picture>
+              <source media="(min-width: 1344px)" srcSet="images/1984-banner-desktop.jpg" />
+              <source media="(min-width: 704px)" srcSet="images/1984-banner-tablet.jpg" />
+              <img className="banner__image" src="images/1984-banner-mobile.jpg" alt="" />
+            </picture>
           </div>
         </SwiperSlide>
         <SwiperSlide>

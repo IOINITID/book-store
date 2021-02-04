@@ -40,6 +40,8 @@ const BookList = () => {
         704: { slidesPerView: 2 },
         1344: { slidesPerView: 4 },
       }}
+      // allowTouchMove={false}
+      simulateTouch={false}
     >
       {books}
       <button className="swiper-button-prev">
