@@ -5,6 +5,21 @@ import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 SwiperCore.use([Pagination, Autoplay]);
 
+const bannerImages = [
+  {
+    title: '',
+    image: 'atomic-design',
+  },
+  {
+    title: '',
+    image: 'twilight',
+  },
+  {
+    title: '',
+    image: '1984',
+  },
+];
+
 const Banner = () => {
   return (
     <div className="banner-container">
@@ -12,22 +27,22 @@ const Banner = () => {
         pagination={{ clickable: true }}
         slidesPerView={1}
         spaceBetween={0}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        // autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
       >
         <SwiperSlide>
           <div className="banner">
-            <img src="images/atomic-design-banner.jpg" alt="" />
+            <img className="banner__image" src="images/atomic-design-banner.jpg" alt="" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <img src="images/twilight-banner.jpg" alt="" />
+            <img className="banner__image" src="images/twilight-banner.jpg" alt="" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="banner">
-            <img src="images/1984-banner.jpg" alt="" />
+            <img className="banner__image" src="images/1984-banner.jpg" alt="" />
           </div>
         </SwiperSlide>
         <SwiperSlide>

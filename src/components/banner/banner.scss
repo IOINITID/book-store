@@ -8,14 +8,60 @@
   border-radius: 16px;
 }
 
+.banner__image {
+  width: 100%;
+  max-width: 1312px;
+  height: 320px;
+  max-height: 320px;
+  border-radius: 16px;
+}
+
 .banner-container .swiper-container {
   display: flex;
   flex-direction: column-reverse;
   width: 1312px;
   margin: 0 auto 16px auto;
   padding: 0;
+  border-radius: 16px;
 }
 
 .banner-container .swiper-pagination {
   justify-content: center;
+}
+
+@media (max-width: 1344px) {
+  .banner {
+    max-width: 672px;
+    height: 296px;
+    max-height: 296px;
+  }
+
+  .banner__image {
+    max-width: 672px;
+    height: 296px;
+    max-height: 296px;
+  }
+
+  .banner-container .swiper-container {
+    width: 672px;
+    max-height: 296px;
+  }
+}
+
+@media (max-width: 704px) {
+  .banner {
+    max-width: 272px;
+    height: 120px;
+    max-height: 120px;
+  }
+
+  .banner__image {
+    max-width: 272;
+    height: 120px;
+    max-height: 120px;
+  }
+
+  .banner-container .swiper-container {
+    width: 272px;
+  }
 }

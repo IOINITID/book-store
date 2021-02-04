@@ -31,11 +31,15 @@ const BookList = () => {
   return (
     <Swiper
       spaceBetween={32}
-      slidesPerView={4}
       navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
       wrapperTag="ul"
       loop={true}
       initialSlide={4}
+      breakpoints={{
+        0: { slidesPerView: 1 },
+        704: { slidesPerView: 2 },
+        1344: { slidesPerView: 4 },
+      }}
     >
       {books}
       <button className="swiper-button-prev">

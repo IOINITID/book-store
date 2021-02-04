@@ -1,5 +1,5 @@
 .app__container {
-  width: 1312px;
+  max-width: 1312px;
   margin: 0 auto;
 }
 
@@ -9,4 +9,20 @@
   font-size: 24px;
   line-height: 28px;
   color: #5e5e5e;
+}
+
+@media (max-width: 1344px) {
+  .app__container {
+    max-width: 672px;
+  }
+}
+
+@media (max-width: 704px) {
+  .app__container {
+    max-width: 272px;
+  }
+
+  .app__title {
+    margin-bottom: 16px;
+  }
 }

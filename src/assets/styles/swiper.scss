@@ -61,6 +61,7 @@
   height: 8px;
   background: #bbbbbb;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .swiper-pagination-bullet:not(:last-child) {
@@ -69,4 +70,20 @@
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: #5e5e5e;
+}
+
+@media (max-width: 1344px) {
+  .swiper-container {
+    width: 704px;
+  }
+}
+
+@media (max-width: 704px) {
+  .swiper-container {
+    max-width: 304px;
+  }
+
+  .banner-container .swiper-container {
+    margin-bottom: 24px;
+  }
 }
