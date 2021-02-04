@@ -1,21 +1,16 @@
 import React from 'react';
 import './header.scss';
-import SearchIcon from '../../assets/images/search-icon.svg';
 import FavoriteIcon from '../../assets/images/favorite-icon.svg';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import Logo from '../logo/logo';
+import Search from '../search/search';
 
 const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
         <Logo />
-        <form className="form" action="#">
-          <label className="form__label" htmlFor="">
-            <input className="form__search" type="search" placeholder="Искать книгу" />
-            <SearchIcon className="form__search-icon" />
-          </label>
-        </form>
+        <Search />
         <div className="favorite__wrapper">
           <div className="favorite">
             <span className="favorite__quantity">6</span>
