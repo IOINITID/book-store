@@ -30,8 +30,8 @@ const BookList = (props: IBookList) => {
 
   const books = booksData.map((book) => {
     return (
-      <SwiperSlide className="book-item" key={book.book.id} tag="li">
-        <Book book={book.book} />
+      <SwiperSlide className="book-item" key={book.id} tag="li">
+        <Book book={book} />
       </SwiperSlide>
     );
   });

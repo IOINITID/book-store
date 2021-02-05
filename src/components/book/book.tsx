@@ -4,7 +4,7 @@ import BookCover from '../book-cover/book-cover';
 import BookInfo from '../book-info/book-info';
 import { IBook } from '../../interfaces/index';
 
-const Book = (props: IBook) => {
+const Book = (props: { book: IBook }) => {
   const {
     book: { id, title, author, publisher, release, pages, cover, age, image, rating, price, genres, description },
   } = props;

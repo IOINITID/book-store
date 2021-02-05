@@ -1,19 +1,17 @@
 interface IBook {
-  book: {
-    id: string;
-    title: string;
-    author: string;
-    publisher: string;
-    release: number;
-    pages: number;
-    cover: string;
-    age: number;
-    image: string;
-    rating: number;
-    price: number;
-    genres: string[];
-    description: string;
-  };
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
 }
 
 interface IBookCover {
