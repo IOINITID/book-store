@@ -6,12 +6,17 @@
 
 .header__container {
   display: flex;
+  align-items: center;
   max-width: 1312px;
   margin: 0 auto;
   padding: 26px 0 46px 0;
 }
 
 @media (max-width: 1344px) {
+  .header {
+    margin-bottom: 24px;
+  }
+
   .header__container {
     max-width: 672px;
   }
@@ -20,5 +25,6 @@
 @media (max-width: 704px) {
   .header__container {
     max-width: 272px;
+    padding: 8px 0;
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
+import './app.scss';
 import Banner from '../banner/banner';
 import BookList from '../book-list/book-list';
 import Header from '../header/header';
-import './app.scss';
 
 const App = () => {
   return (

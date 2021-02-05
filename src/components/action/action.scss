@@ -6,6 +6,10 @@
   margin-right: 8px;
 }
 
+.action:last-child {
+  margin-left: 68px;
+}
+
 .action__container {
   position: relative;
   display: flex;
@@ -44,4 +48,20 @@
   line-height: 16px;
   color: #5e5e5e;
   white-space: nowrap;
+}
+
+@media (max-width: 1344px) {
+  .action:last-child {
+    margin-left: 36px;
+  }
+}
+
+@media (max-width: 704px) {
+  .action__price {
+    display: none;
+  }
+
+  .action:last-child {
+    margin-left: 20px;
+  }
 }
