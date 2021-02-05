@@ -19,6 +19,10 @@ const bannerData = [
     title: '1984',
     image: '1984',
   },
+  {
+    title: 'И вспыхнет пламя',
+    image: 'catching-fire',
+  },
 ];
 
 const banners = bannerData.map((banner, index) => {

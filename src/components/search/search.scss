@@ -43,3 +43,15 @@
   top: 8px;
   left: 20px;
 }
+
+@media (max-width: 1344px) {
+  .search {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 704px) {
+  .search {
+    max-width: 112px;
+  }
+}
