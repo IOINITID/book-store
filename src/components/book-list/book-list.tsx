@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Book from '../book/book';
 import './book-list.scss';
 import { booksUrl } from '../../utils/constants';
@@ -6,24 +6,32 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
+import { connect } from 'react-redux';
+import { loadBooksAction } from '../../actions/index';
+import { IBook } from '../../interfaces';
 
 SwiperCore.use([Navigation]);
 
-const BookList = () => {
-  const [booksData, setBooksData] = useState([]);
+interface IBookList {
+  booksData: IBook[];
+  loadBooks: (books) => void;
+}
+
+const BookList = (props: IBookList) => {
+  const { booksData, loadBooks } = props;
 
   useEffect(() => {
     fetch(booksUrl)
       .then((response) => response.json())
-      .then((result) => setBooksData(result));
+      .then((books) => loadBooks(books));
   }, []);
 
   console.log('Список книг:', booksData);
 
   const books = booksData.map((book) => {
     return (
-      <SwiperSlide className="book-item" key={book.id} tag="li">
-        <Book book={book} />
+      <SwiperSlide className="book-item" key={book.book.id} tag="li">
+        <Book book={book.book} />
       </SwiperSlide>
     );
   });
@@ -50,4 +58,16 @@ const BookList = () => {
   );
 };
 
-export default BookList;
+const mapStateToProps = (state) => {
+  return {
+    booksData: state.books,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadBooks: (books) => dispatch(loadBooksAction(books)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);

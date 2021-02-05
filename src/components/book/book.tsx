@@ -6,12 +6,12 @@ import { IBook } from '../../interfaces/index';
 
 const Book = (props: IBook) => {
   const {
-    book: { title, author, publisher, release, pages, cover, age, image, rating, price, genres, description },
+    book: { id, title, author, publisher, release, pages, cover, age, image, rating, price, genres, description },
   } = props;
 
   return (
     <div className="book">
-      <BookCover bookCover={{ title, image, rating }} />
+      <BookCover bookCover={{ id, title, image, rating }} />
       <BookInfo bookInfo={{ title, author, price, genres }} />
     </div>
   );

@@ -1,5 +1,6 @@
 interface IBook {
   book: {
+    id: string;
     title: string;
     author: string;
     publisher: string;
@@ -17,10 +18,12 @@ interface IBook {
 
 interface IBookCover {
   bookCover: {
+    id: string;
     title: string;
     image: string;
     rating: number;
   };
+  showModal: (id) => void;
 }
 
 interface IBookInfo {
