@@ -24,7 +24,7 @@ const BookCover = (props: IBookCover) => {
       <a href="#ref" onClick={onImageClick}>
         <img
           className="image"
-          src={`images/${image}.jpg`}
+          src={`images/${image}-1.jpg`}
           width="136"
           height="160"
           loading="lazy"

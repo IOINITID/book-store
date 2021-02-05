@@ -44,7 +44,7 @@
   height: 480px;
 }
 
-.modal__image-preview {
+.modal__image:first-child {
   grid-column: 2/3;
   grid-row: 1/4;
 }
@@ -94,6 +94,7 @@
 
 .modal__feature dd {
   margin: 0;
+  color: #787878;
 }
 
 .modal__genre-list {

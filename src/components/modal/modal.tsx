@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './modal.scss';
 import FavoriteModalIcon from '../../assets/images/favorite-modal-icon.svg';
 import CloseIcon from '../../assets/images/close-icon.svg';
 import { connect } from 'react-redux';
 import { closeModalAction } from '../../actions/index';
+import { getColorByGenre } from '../../utils/common';
 
 interface IModal {
   modalData: {
@@ -26,77 +27,112 @@ interface IModal {
 
 const Modal = (props: IModal) => {
   const { modalData, closeModal } = props;
-  const { image } = modalData[0];
+  const {
+    title,
+    image,
+    author,
+    publisher,
+    release,
+    pages,
+    cover,
+    age,
+    rating,
+    price,
+    genres,
+    description,
+  } = modalData[0];
+  const modalRef = useRef(null);
+
+  const onModalCloseClick = (evt) => {
+    evt.preventDefault();
+
+    if (!modalRef.current.contains(evt.target)) {
+      closeModal();
+    }
+  };
+
+  const imagesQuantity = [2, 3, 4];
+
+  useEffect(() => {
+    document.addEventListener('click', onModalCloseClick);
+    return () => document.removeEventListener('click', onModalCloseClick);
+  }, []);
+
+  const imageRef = useRef(null);
 
   return (
     <div className="overlay">
-      <div className="modal">
+      <div className="modal" ref={modalRef}>
         <button className="modal__close" type="button" onClick={closeModal}>
           <CloseIcon width="16" height="16" />
         </button>
         <div className="modal__images">
-          <div className="modal__image modal__image-preview">
-            <img src={`images/${image}.jpg`} alt="" />
-          </div>
           <div className="modal__image">
-            <img src={`images/${image}.jpg`} alt="" />
+            <img src={`images/${image}-1.jpg`} alt={`Обложка книги ${title}.`} ref={imageRef} />
           </div>
-          <div className="modal__image">
-            <img src={`images/${image}.jpg`} alt="" />
-          </div>
-          <div className="modal__image">
-            <img src={`images/${image}.jpg`} alt="" />
-          </div>
+          {imagesQuantity.map((item) => {
+            const onImageClick = (evt) => {
+              evt.preventDefault();
+
+              imageRef.current.src = `images/${image}-${item}.jpg`;
+            };
+
+            return (
+              <div className="modal__image" key={item}>
+                <a href="#ref" onClick={onImageClick}>
+                  <img src={`images/${image}-${item}.jpg`} alt={`Обложка книги ${title}.`} />
+                </a>
+              </div>
+            );
+          })}
         </div>
 
         <div className="modal__info">
-          <h2 className="modal__title">Хроники Нарнии</h2>
+          <h2 className="modal__title">{title}</h2>
 
           <div className="modal__feature">
             <dl className="modal__feature-item">
               <dt>Автор</dt>
-              <dd>Автор книги</dd>
+              <dd>{author}</dd>
             </dl>
             <dl className="modal__feature-item">
               <dt>Издательство</dt>
-              <dd>Название издательства</dd>
+              <dd>{publisher}</dd>
             </dl>
             <dl className="modal__feature-item">
               <dt>Год выпуска</dt>
-              <dd>2020 г.</dd>
+              <dd>{release} г.</dd>
             </dl>
             <dl className="modal__feature-item">
               <dt>Страницы</dt>
-              <dd>120 с.</dd>
+              <dd>{pages} с.</dd>
             </dl>
             <dl className="modal__feature-item">
               <dt>Тип обложки</dt>
-              <dd>Мягкая обложка</dd>
+              <dd>{cover}</dd>
             </dl>
             <dl className="modal__feature-item">
               <dt>Возрастные ограничения</dt>
-              <dd>18+</dd>
+              <dd>{age}+</dd>
             </dl>
           </div>
-
           <ul className="modal__genre-list">
-            <li className="modal__genre-item">
-              <span className="modal__genre">Фэнтези</span>
-            </li>
-            <li className="modal__genre-item">
-              <span className="modal__genre">Приключения</span>
-            </li>
-          </ul>
+            {genres.map((genre, index) => {
+              const background = getColorByGenre(genre);
 
+              return (
+                <li className="modal__genre-item" key={genre + index}>
+                  <span className="modal__genre" style={{ backgroundColor: background }}>
+                    {genre}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
           <h3 className="modal__description">Описание</h3>
-          <p className="modal__description-text">
-            Хроники Нарнии — цикл из семи фэнтезийных повестей, написанных Клайвом Стэйплзом Льюисом. В них
-            рассказывается о приключениях детей в волшебной стране под названием Нарния, где животные могут
-            разговаривать, магия никого не удивляет, а добро борется со злом. «Хроники Нарнии» содержат много намёков на
-            христианские идеи в доступном для юных читателей виде.
-          </p>
+          <p className="modal__description-text">{description}</p>
           <div className="modal__actions">
-            <span className="modal__price">1 116 ₽</span>
+            <span className="modal__price">{price} ₽</span>
             <button className="modal__cart" type="button" title="Добавить в корзину">
               Добавить в корзину
             </button>
