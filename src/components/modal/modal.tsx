@@ -41,7 +41,11 @@ const Modal = (props: IModal) => {
     genres,
     description,
   } = modalData[0];
+
   const modalRef = useRef(null);
+  const imageRef = useRef(null);
+
+  const imagesQuantity = [2, 3, 4];
 
   const onModalCloseClick = (evt) => {
     evt.preventDefault();
@@ -51,14 +55,10 @@ const Modal = (props: IModal) => {
     }
   };
 
-  const imagesQuantity = [2, 3, 4];
-
   useEffect(() => {
     document.addEventListener('click', onModalCloseClick);
     return () => document.removeEventListener('click', onModalCloseClick);
   }, []);
-
-  const imageRef = useRef(null);
 
   return (
     <div className="overlay">
