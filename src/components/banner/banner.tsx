@@ -47,13 +47,14 @@ const Banner = () => {
   return (
     <div className="banner-container">
       <Swiper
-        pagination={{ clickable: true }}
+        pagination={{ clickable: true, el: '.swiper-pagination' }}
         slidesPerView={1}
         spaceBetween={0}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
       >
         {banners}
+        <div className="swiper-pagination"></div>
       </Swiper>
     </div>
   );

@@ -2,7 +2,6 @@
   width: 100%;
   max-width: 1312px;
   height: 320px;
-  max-height: 320px;
   margin-bottom: 8px;
   background: #e9e7e7;
   border-radius: 16px;
@@ -18,7 +17,7 @@
 
 .banner-container .swiper-container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 1312px;
   margin: 0 auto 16px auto;
   padding: 0;
@@ -44,7 +43,6 @@
 
   .banner-container .swiper-container {
     width: 672px;
-    max-height: 296px;
   }
 }
 
@@ -52,16 +50,17 @@
   .banner {
     max-width: 272px;
     height: 120px;
-    max-height: 120px;
+    border-radius: 4px;
   }
 
   .banner__image {
     max-width: 272;
     height: 120px;
-    max-height: 120px;
+    border-radius: 4px;
   }
 
   .banner-container .swiper-container {
     width: 272px;
+    border-radius: 4px;
   }
 }
