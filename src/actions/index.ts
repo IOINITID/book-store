@@ -20,4 +20,11 @@ const closeModalAction = () => {
   };
 };
 
-export { ActionTypes, loadBooksAction, showModalAction, closeModalAction };
+const addToFavoriteAction = (id) => {
+  return {
+    type: ActionTypes.ADD_TO_FAVORITE,
+    payload: id,
+  };
+};
+
+export { ActionTypes, loadBooksAction, showModalAction, closeModalAction, addToFavoriteAction };

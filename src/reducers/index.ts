@@ -22,6 +22,16 @@ const reducer = (state = initialState, action) => {
         modalData: null,
         isModalOpen: false,
       };
+    case ActionTypes.ADD_TO_FAVORITE:
+      return {
+        ...state,
+        books: state.books.slice().map((book) => {
+          if (book.id === action.payload) {
+            book.favorite = true;
+          }
+          return { ...book };
+        }),
+      };
     default:
       return state;
   }

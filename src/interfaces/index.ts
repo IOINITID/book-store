@@ -12,6 +12,7 @@ interface IBook {
   price: number;
   genres: string[];
   description: string;
+  favorite?: boolean;
 }
 
 interface IBookCover {
