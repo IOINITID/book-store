@@ -3,7 +3,7 @@ import './modal.scss';
 import FavoriteModalIcon from '../../assets/images/favorite-modal-icon.svg';
 import CloseIcon from '../../assets/images/close-icon.svg';
 import { connect } from 'react-redux';
-import { closeModalAction } from '../../actions/index';
+import { closeModalAction } from '../../actions';
 import { getColorByGenre } from '../../utils/common';
 
 interface IModal {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './book-rating.scss';
 import RatingIcon from '../../assets/images/rating-icon.svg';
-import { IBookRating } from '../../interfaces/index';
+import { IBookRating } from '../../interfaces';
 
 const BookRating = (props: IBookRating) => {
   const { rating } = props;

@@ -2,7 +2,7 @@ import React from 'react';
 import './book.scss';
 import BookCover from '../book-cover/book-cover';
 import BookInfo from '../book-info/book-info';
-import { IBook } from '../../interfaces/index';
+import { IBook } from '../../interfaces';
 
 const Book = (props: { book: IBook }) => {
   const {
@@ -11,7 +11,7 @@ const Book = (props: { book: IBook }) => {
 
   return (
     <div className="book">
-      <BookCover bookCover={{ id, title, image, rating }} />
+      <BookCover title={title} image={image} rating={rating} />
       <BookInfo bookInfo={{ title, author, price, genres }} />
     </div>
   );

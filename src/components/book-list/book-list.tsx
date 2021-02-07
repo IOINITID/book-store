@@ -7,7 +7,7 @@ import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
 import { connect } from 'react-redux';
-import { loadBooksAction } from '../../actions/index';
+import { loadBooksAction } from '../../actions';
 import { IBook } from '../../interfaces';
 
 SwiperCore.use([Navigation]);

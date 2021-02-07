@@ -15,13 +15,9 @@ interface IBook {
 }
 
 interface IBookCover {
-  bookCover: {
-    id: string;
-    title: string;
-    image: string;
-    rating: number;
-  };
-  showModal: (id) => void;
+  title: string;
+  image: string;
+  rating: number;
 }
 
 interface IBookInfo {

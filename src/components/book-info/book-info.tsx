@@ -2,7 +2,7 @@ import React from 'react';
 import './book-info.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import { getColorByGenre } from '../../utils/common';
-import { IBookInfo } from '../../interfaces/index';
+import { IBookInfo } from '../../interfaces';
 
 const BookInfo = (props: IBookInfo) => {
   const {
