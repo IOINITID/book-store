@@ -80,6 +80,29 @@ const reducer = (state = initialState, action) => {
         cartTotalPrice: cartTotalPrice,
         cartQuantity: cartQuantity,
       };
+    case ActionTypes.REMOVE_FROM_CART:
+      // eslint-disable-next-line no-case-declarations
+      const cartBookData = state.books
+        .slice()
+        .map((book) => {
+          if (book.id === action.payload && !book.quantity) {
+            book.quantity = 1;
+            book.totalPrice = book.price * book.quantity;
+            return book;
+          }
+
+          if (book.id === action.payload && book.quantity > 1) {
+            book.quantity -= 1;
+            book.totalPrice = book.price * book.quantity;
+            return book;
+          }
+        })
+        .filter((book) => book);
+
+      return {
+        ...state,
+        cartBooks: [...Array.from(new Set([...state.cartBooks, ...cartBookData]))],
+      };
     default:
       return state;
   }

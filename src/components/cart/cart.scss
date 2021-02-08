@@ -1,0 +1,16 @@
+.cart ul li {
+  display: grid;
+  align-items: center;
+  grid-auto-flow: column;
+  padding: 25px 32px;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.cart ul li:first-child {
+  border-top: 1px solid #bbbbbb;
+}
+
+.cart img {
+  object-fit: cover;
+  object-position: center center;
+}

@@ -6,6 +6,7 @@ import Header from '../header/header';
 import Modal from '../modal/modal';
 import { connect } from 'react-redux';
 import {} from '../../interfaces';
+import Cart from '../cart/cart';
 
 interface IApp {
   isModalOpen: boolean;
@@ -24,6 +25,7 @@ const App = (props: IApp) => {
         </div>
         <BookList />
       </div>
+      {/* <Cart /> */}
       {isModalOpen && <Modal />}
     </div>
   );

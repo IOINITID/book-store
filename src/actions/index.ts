@@ -34,4 +34,19 @@ const addToCartAction = (id) => {
   };
 };
 
-export { ActionTypes, loadBooksAction, showModalAction, closeModalAction, addToFavoriteAction, addToCartAction };
+const removeFromCartAction = (id) => {
+  return {
+    type: ActionTypes.REMOVE_FROM_CART,
+    payload: id,
+  };
+};
+
+export {
+  ActionTypes,
+  loadBooksAction,
+  showModalAction,
+  closeModalAction,
+  addToFavoriteAction,
+  addToCartAction,
+  removeFromCartAction,
+};
