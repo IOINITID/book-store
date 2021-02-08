@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         books: state.books.slice().map((book) => {
           if (book.id === action.payload) {
-            book.favorite = true;
+            book.favorite = !book.favorite;
           }
           return { ...book };
         }),
