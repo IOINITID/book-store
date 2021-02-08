@@ -14,6 +14,7 @@ interface IBook {
   description: string;
   favorite?: boolean;
   cart?: boolean;
+  quantity?: number;
 }
 
 interface IBookCover {

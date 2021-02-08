@@ -8,28 +8,21 @@ import { IBook } from '../../interfaces';
 
 interface IHeader {
   books: IBook[];
+  cartTotalPrice: number;
+  cartQuantity: number;
+  cartFavorite: number;
 }
 
 const Header = (props: IHeader) => {
-  const { books } = props;
-  const favoriteQuantity = books.filter((book) => book.favorite).length;
-  const cartQuantity = books.filter((book) => book.cart).length;
-  const cartPrice = books
-    .filter((book) => book.cart)
-    .map((book) => book.price)
-    .reduce((previousValue, currentValue) => {
-      return previousValue + currentValue;
-    }, 0);
-
-  console.log('Цена книг:', cartPrice);
+  const { cartTotalPrice, cartQuantity, cartFavorite } = props;
 
   return (
     <header className="header">
       <div className="header__container">
         <Logo />
         <Search />
-        <Action type="favorite" quantity={favoriteQuantity} />
-        <Action type="cart" quantity={cartQuantity} price={cartPrice} />
+        <Action type="favorite" quantity={cartFavorite} />
+        <Action type="cart" quantity={cartQuantity} price={cartTotalPrice} />
       </div>
     </header>
   );
@@ -38,6 +31,9 @@ const Header = (props: IHeader) => {
 const mapStateToProps = (state) => {
   return {
     books: state.books,
+    cartTotalPrice: state.cartTotalPrice,
+    cartQuantity: state.cartQuantity,
+    cartFavorite: state.cartFavorite,
   };
 };
 
