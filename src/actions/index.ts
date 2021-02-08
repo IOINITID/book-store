@@ -27,4 +27,11 @@ const addToFavoriteAction = (id) => {
   };
 };
 
-export { ActionTypes, loadBooksAction, showModalAction, closeModalAction, addToFavoriteAction };
+const addToCartAction = (id) => {
+  return {
+    type: ActionTypes.ADD_TO_CART,
+    payload: id,
+  };
+};
+
+export { ActionTypes, loadBooksAction, showModalAction, closeModalAction, addToFavoriteAction, addToCartAction };

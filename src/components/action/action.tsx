@@ -18,7 +18,7 @@ const Action = (props: IAction) => {
         <span className="action__quantity">{quantity}</span>
         {type && type === 'favorite' ? <FavoriteIcon width="18" height="16" /> : <CartIcon width="14" height="16" />}
       </div>
-      {price && <span className="action__price">{price.toLocaleString()} ₽</span>}
+      {price ? <span className="action__price">{price.toLocaleString()} ₽</span> : null}
     </div>
   );
 };

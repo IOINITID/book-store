@@ -21,7 +21,7 @@ const Book = (props: { book: IBook; showModal: (id) => void }) => {
     <div className="book">
       <a className="book__link" href="#ref" onClick={onBookClick}>
         <BookCover title={title} image={image} rating={rating} />
-        <BookInfo bookInfo={{ title, author, price, genres }} />
+        <BookInfo bookInfo={{ id, title, author, price, genres }} />
       </a>
     </div>
   );

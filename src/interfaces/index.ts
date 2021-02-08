@@ -13,6 +13,7 @@ interface IBook {
   genres: string[];
   description: string;
   favorite?: boolean;
+  cart?: boolean;
 }
 
 interface IBookCover {
@@ -22,12 +23,11 @@ interface IBookCover {
 }
 
 interface IBookInfo {
-  bookInfo: {
-    title: string;
-    author: string;
-    price: number;
-    genres: string[];
-  };
+  id: string;
+  title: string;
+  author: string;
+  price: number;
+  genres: string[];
 }
 
 interface IBookRating {

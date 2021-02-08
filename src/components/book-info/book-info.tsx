@@ -3,10 +3,13 @@ import './book-info.scss';
 import CartIcon from '../../assets/images/cart-icon.svg';
 import { getColorByGenre } from '../../utils/common';
 import { IBookInfo } from '../../interfaces';
+import { connect } from 'react-redux';
+import { addToCartAction } from '../../actions';
 
-const BookInfo = (props: IBookInfo) => {
+const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
   const {
-    bookInfo: { title, author, price, genres },
+    bookInfo: { id, title, author, price, genres },
+    addToCart,
   } = props;
 
   const genresItems = genres.map((item, index) => {
@@ -28,7 +31,15 @@ const BookInfo = (props: IBookInfo) => {
       <ul className="genre-list">{genresItems}</ul>
       <div className="cart">
         <span className="price">{price.toLocaleString()} ₽</span>
-        <button className="button-buy" type="button" title="Добавить в корзину">
+        <button
+          className="button-buy"
+          type="button"
+          title="Добавить в корзину"
+          onClick={(evt) => {
+            evt.stopPropagation();
+            addToCart(id);
+          }}
+        >
           <CartIcon width="12" height="13" />
         </button>
       </div>
@@ -36,4 +47,10 @@ const BookInfo = (props: IBookInfo) => {
   );
 };
 
-export default BookInfo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id) => dispatch(addToCartAction(id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(BookInfo);

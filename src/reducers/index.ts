@@ -32,6 +32,16 @@ const reducer = (state = initialState, action) => {
           return { ...book };
         }),
       };
+    case ActionTypes.ADD_TO_CART:
+      return {
+        ...state,
+        books: state.books.slice().map((book) => {
+          if (book.id === action.payload) {
+            book.cart = true;
+          }
+          return { ...book };
+        }),
+      };
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import './modal.scss';
 import FavoriteModalIcon from '../../assets/images/favorite-modal-icon.svg';
 import CloseIcon from '../../assets/images/close-icon.svg';
 import { connect } from 'react-redux';
-import { addToFavoriteAction, closeModalAction } from '../../actions';
+import { addToCartAction, addToFavoriteAction, closeModalAction } from '../../actions';
 import { getColorByGenre } from '../../utils/common';
 
 interface IModal {
@@ -24,10 +24,11 @@ interface IModal {
   };
   closeModal: () => void;
   addToFavorite: (id) => void;
+  addToCart: (id) => void;
 }
 
 const Modal = (props: IModal) => {
-  const { modalData, closeModal, addToFavorite } = props;
+  const { modalData, closeModal, addToFavorite, addToCart } = props;
   const {
     id,
     title,
@@ -135,7 +136,7 @@ const Modal = (props: IModal) => {
           <p className="modal__description-text">{description}</p>
           <div className="modal__actions">
             <span className="modal__price">{price} ₽</span>
-            <button className="modal__cart" type="button" title="Добавить в корзину">
+            <button className="modal__cart" type="button" title="Добавить в корзину" onClick={() => addToCart(id)}>
               Добавить в корзину
             </button>
             <button
@@ -163,6 +164,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModalAction()),
     addToFavorite: (id) => dispatch(addToFavoriteAction(id)),
+    addToCart: (id) => dispatch(addToCartAction(id)),
   };
 };
 
