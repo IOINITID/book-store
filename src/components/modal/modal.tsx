@@ -7,10 +7,11 @@ import { addToCartAction, toggleFavoriteAction, closeModalAction } from '../../a
 import { getColorByGenre } from '../../utils/common';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import SwiperCore, { Pagination, Autoplay, Navigation } from 'swiper';
 import 'swiper/swiper.scss';
+import ArrowIcon from '../../assets/images/arrow-icon.svg';
 
-SwiperCore.use([Pagination, Autoplay]);
+SwiperCore.use([Pagination, Autoplay, Navigation]);
 
 interface IModal {
   modalData: {
@@ -72,7 +73,13 @@ const Modal = (props: IModal) => {
   const isMobile = window.matchMedia('(max-width: 1343px)').matches;
 
   const sliderImages = (
-    <Swiper pagination={{ clickable: true, el: '.swiper-pagination' }} slidesPerView={1} spaceBetween={0} loop={true}>
+    <Swiper
+      navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
+      pagination={{ clickable: true, el: '.swiper-pagination' }}
+      slidesPerView={1}
+      spaceBetween={16}
+      loop={true}
+    >
       {[1, 2, 3, 4].map((item) => {
         return (
           <SwiperSlide key={image + item}>
@@ -83,6 +90,12 @@ const Modal = (props: IModal) => {
         );
       })}
       <div className="swiper-pagination"></div>
+      <button className="swiper-button-prev">
+        <ArrowIcon className="swiper-button-prev-icon" />
+      </button>
+      <button className="swiper-button-next">
+        <ArrowIcon className="swiper-button-next-icon" />
+      </button>
     </Swiper>
   );
 
