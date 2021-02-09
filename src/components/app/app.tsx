@@ -5,7 +5,6 @@ import BookList from '../book-list/book-list';
 import Header from '../header/header';
 import Modal from '../modal/modal';
 import { connect } from 'react-redux';
-import {} from '../../interfaces';
 import Cart from '../cart/cart';
 
 interface IApp {
@@ -25,7 +24,7 @@ const App = (props: IApp) => {
         </div>
         <BookList />
       </div>
-      {/* <Cart /> */}
+      <Cart />
       {isModalOpen && <Modal />}
     </div>
   );
@@ -37,10 +36,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // modalData: () => dispatch(dsadas()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

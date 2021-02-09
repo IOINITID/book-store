@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
           }
           return { ...book };
         }),
-        cartFavorite: state.books.filter((book) => book.favorite).length,
+        cartFavorite: state.books.slice().filter((book) => book.favorite).length,
       };
     case ActionTypes.ADD_TO_CART:
       // eslint-disable-next-line no-case-declarations
