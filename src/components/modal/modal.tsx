@@ -6,6 +6,12 @@ import { connect } from 'react-redux';
 import { addToCartAction, toggleFavoriteAction, closeModalAction } from '../../actions';
 import { getColorByGenre } from '../../utils/common';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import 'swiper/swiper.scss';
+
+SwiperCore.use([Pagination, Autoplay]);
+
 interface IModal {
   modalData: {
     id: string;
@@ -63,32 +69,54 @@ const Modal = (props: IModal) => {
     return () => document.removeEventListener('click', onModalCloseClick);
   }, []);
 
+  const isMobile = window.matchMedia('(max-width: 1343px)').matches;
+
+  const sliderImages = (
+    <Swiper pagination={{ clickable: true, el: '.swiper-pagination' }} slidesPerView={1} spaceBetween={0} loop={true}>
+      {[1, 2, 3, 4].map((item) => {
+        return (
+          <SwiperSlide key={image + item}>
+            <a href="#ref">
+              <img src={`images/${image}-${item}.jpg`} width="672" height="742" alt={`Обложка книги ${title}.`} />
+            </a>
+          </SwiperSlide>
+        );
+      })}
+      <div className="swiper-pagination"></div>
+    </Swiper>
+  );
+
   return (
     <div className="overlay">
       <div className="modal" ref={modalRef}>
         <button className="modal__close" type="button" onClick={closeModal}>
           <CloseIcon width="16" height="16" />
         </button>
-        <div className="modal__images">
-          <div className="modal__image">
-            <img src={`images/${image}-1.jpg`} alt={`Обложка книги ${title}.`} ref={imageRef} />
+
+        {isMobile ? (
+          sliderImages
+        ) : (
+          <div className="modal__images">
+            <div className="modal__image">
+              <img src={`images/${image}-1.jpg`} alt={`Обложка книги ${title}.`} ref={imageRef} />
+            </div>
+            {imagesQuantity.map((item) => {
+              const onImageClick = (evt) => {
+                evt.preventDefault();
+
+                imageRef.current.src = `images/${image}-${item}.jpg`;
+              };
+
+              return (
+                <div className="modal__image" key={item}>
+                  <a href="#ref" onClick={onImageClick}>
+                    <img src={`images/${image}-${item}.jpg`} alt={`Обложка книги ${title}.`} />
+                  </a>
+                </div>
+              );
+            })}
           </div>
-          {imagesQuantity.map((item) => {
-            const onImageClick = (evt) => {
-              evt.preventDefault();
-
-              imageRef.current.src = `images/${image}-${item}.jpg`;
-            };
-
-            return (
-              <div className="modal__image" key={item}>
-                <a href="#ref" onClick={onImageClick}>
-                  <img src={`images/${image}-${item}.jpg`} alt={`Обложка книги ${title}.`} />
-                </a>
-              </div>
-            );
-          })}
-        </div>
+        )}
 
         <div className="modal__info">
           <h2 className="modal__title">{title}</h2>

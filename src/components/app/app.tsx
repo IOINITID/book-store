@@ -24,7 +24,7 @@ const App = (props: IApp) => {
         </div>
         <BookList />
       </div>
-      <Cart />
+      {/* <Cart /> */}
       {isModalOpen && <Modal />}
     </div>
   );
