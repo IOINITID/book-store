@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
         modalData: null,
         isModalOpen: false,
       };
-    case ActionTypes.ADD_TO_FAVORITE:
+    case ActionTypes.TOGGLE_FAVORITE:
       return {
         ...state,
         books: state.books.slice().map((book) => {

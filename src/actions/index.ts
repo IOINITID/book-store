@@ -20,9 +20,9 @@ const closeModalAction = () => {
   };
 };
 
-const addToFavoriteAction = (id) => {
+const toggleFavoriteAction = (id) => {
   return {
-    type: ActionTypes.ADD_TO_FAVORITE,
+    type: ActionTypes.TOGGLE_FAVORITE,
     payload: id,
   };
 };
@@ -46,7 +46,7 @@ export {
   loadBooksAction,
   showModalAction,
   closeModalAction,
-  addToFavoriteAction,
+  toggleFavoriteAction,
   addToCartAction,
   removeFromCartAction,
 };
