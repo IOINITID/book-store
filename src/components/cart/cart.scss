@@ -1,4 +1,8 @@
-.cart ul li {
+.cart__page {
+  display: grid;
+}
+
+.cart__page ul li {
   display: grid;
   align-items: center;
   grid-auto-flow: column;
@@ -6,11 +10,11 @@
   box-shadow: inset 0 -1px 0 0 #bbbbbb;
 }
 
-.cart ul li:first-child {
+.cart__page ul li:first-child {
   box-shadow: inset 0 -1px 0 0 #bbbbbb, inset 0 1px 0 0 #bbbbbb;
 }
 
-.cart img {
+.cart__page img {
   object-fit: cover;
   object-position: center center;
 }

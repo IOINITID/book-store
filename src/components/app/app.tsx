@@ -18,10 +18,9 @@ const App = (props: IApp) => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" component={MainPage} exact />
         <Route path="/book-store" component={MainPage} exact />
         <Route path="/book-store/index.html" component={MainPage} exact />
-        <Route path="/cart" component={CartPage} />
+        <Route path="/book-store/cart" component={CartPage} />
       </Switch>
       {isModalOpen && <Modal />}
     </BrowserRouter>

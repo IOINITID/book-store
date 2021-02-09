@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Logo = () => {
   return (
-    <Link className="logo" to="/">
+    <Link className="logo" to="/book-store">
       {/* <LogoIcon className="logo__icon" width="168" height="24" /> */}
       <picture>
         <source media="(min-width: 1344px)" srcSet="images/logo-icon.svg" />

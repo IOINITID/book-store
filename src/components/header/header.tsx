@@ -23,7 +23,7 @@ const Header = (props: IHeader) => {
         <Logo />
         <Search />
         <Action type="favorite" quantity={cartFavorite} />
-        <Link to="/cart">
+        <Link to="/book-store/cart">
           <Action type="cart" quantity={cartQuantity} price={cartTotalPrice} />
         </Link>
       </div>

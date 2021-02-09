@@ -8,7 +8,7 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
   const { cartBooks, addToCart, removeFromCart } = props;
 
   return (
-    <div className="cart">
+    <div className="cart__page">
       <h2>Корзина</h2>
       <ul>
         {cartBooks.map((book, index) => {
