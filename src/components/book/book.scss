@@ -1,24 +1,19 @@
 .book {
-  display: flex;
-  width: 100%;
-  max-width: 304px;
-  background: #f5f5f5;
-}
-
-.book__link {
-  display: flex;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 136px 168px;
+  grid-template-rows: 160px;
   text-decoration: none;
+  background: #f5f5f5;
 }
 
 @media (max-width: 1344px) {
   .book {
-    max-width: 320px;
+    grid-template-columns: 136px 184px;
   }
 }
 
 @media (max-width: 704px) {
   .book {
-    max-width: 272px;
+    grid-template-columns: 136px 136px;
   }
 }
