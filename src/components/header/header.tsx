@@ -5,6 +5,7 @@ import Search from '../search/search';
 import Action from '../action/action';
 import { connect } from 'react-redux';
 import { IBook } from '../../interfaces';
+import { Link } from 'react-router-dom';
 
 interface IHeader {
   books: IBook[];
@@ -22,7 +23,9 @@ const Header = (props: IHeader) => {
         <Logo />
         <Search />
         <Action type="favorite" quantity={cartFavorite} />
-        <Action type="cart" quantity={cartQuantity} price={cartTotalPrice} />
+        <Link to="/cart">
+          <Action type="cart" quantity={cartQuantity} price={cartTotalPrice} />
+        </Link>
       </div>
     </header>
   );
