@@ -18,7 +18,7 @@ const App = (props: IApp) => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/book-store" component={MainPage} exact />
+        <Route path="/book-store/" component={MainPage} exact />
         <Route path="/book-store/index.html" component={MainPage} exact />
         <Route path="/book-store/cart" component={CartPage} />
       </Switch>
