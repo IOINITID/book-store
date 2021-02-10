@@ -7,7 +7,7 @@ enum ActionTypes {
   REMOVE_FROM_CART = 'REMOVE_FROM_CART',
 }
 
-const Mode = 'development';
+const Mode = process.env.NODE_ENV;
 const MainPage = Mode === 'development' ? '/' : '/book-store';
 const MainPageIndex = Mode === 'development' ? '/index.html' : '/book-store/index.html';
 const CartPage = Mode === 'development' ? '/cart' : '/book-store/cart';
