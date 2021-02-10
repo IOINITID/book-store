@@ -190,9 +190,12 @@
     flex-direction: column;
     align-items: center;
     width: 704px;
+    height: 742px;
   }
 
   .modal .swiper-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }
@@ -200,5 +203,25 @@
 @media (max-width: 704px) {
   .modal {
     display: grid;
+    padding: 72px 24px 24px;
+  }
+
+  .modal .swiper-container {
+    width: 272px;
+    height: 304px;
+  }
+
+  .modal__feature-item {
+    grid-template-columns: 125px 110px;
+    gap: 40px;
+  }
+
+  .modal__actions {
+    display: grid;
+    grid-template-columns: max-content max-content;
+  }
+
+  .modal__price {
+    grid-column: 1/ 3;
   }
 }
