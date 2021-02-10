@@ -52,6 +52,16 @@
   transform: rotate(180deg);
 }
 
+.swiper-button-prev:hover .swiper-button-next-icon path,
+.swiper-button-next:hover .swiper-button-next-icon path {
+  fill: #da6551;
+}
+
+.swiper-button-prev:active .swiper-button-next-icon path,
+.swiper-button-next:active .swiper-button-next-icon path {
+  fill: #d23c21;
+}
+
 .swiper-pagination {
   display: flex;
 }
