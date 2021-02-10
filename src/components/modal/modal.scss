@@ -35,6 +35,10 @@
   cursor: pointer;
 }
 
+.modal__close:hover svg path {
+  fill: #bbbbbb;
+}
+
 .modal__images {
   display: grid;
   grid-template-columns: 96px 336px;
