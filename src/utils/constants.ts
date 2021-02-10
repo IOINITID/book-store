@@ -8,7 +8,7 @@ enum ActionTypes {
 }
 
 const Mode = process.env.NODE_ENV;
-const MainPage = Mode === 'development' ? '/' : '/book-store';
+const MainPage = Mode === 'development' ? '/' : '/book-store/';
 const MainPageIndex = Mode === 'development' ? '/index.html' : '/book-store/index.html';
 const CartPage = Mode === 'development' ? '/cart' : '/book-store/cart';
 

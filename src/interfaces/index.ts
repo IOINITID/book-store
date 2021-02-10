@@ -33,6 +33,7 @@ interface IBookInfo {
 
 interface IBookRating {
   rating: number;
+  className?: string;
 }
 
 export { IBook, IBookCover, IBookInfo, IBookRating };
