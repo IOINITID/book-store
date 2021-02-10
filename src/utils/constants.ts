@@ -7,6 +7,17 @@ enum ActionTypes {
   REMOVE_FROM_CART = 'REMOVE_FROM_CART',
 }
 
+const Mode = 'development';
+const MainPage = Mode === 'development' ? '/' : '/book-store';
+const MainPageIndex = Mode === 'development' ? '/index.html' : '/book-store/index.html';
+const CartPage = Mode === 'development' ? '/cart' : '/book-store/cart';
+
+const RoutePath = {
+  MAIN_PAGE: MainPage,
+  MAIN_PAGE_INDEX: MainPageIndex,
+  CART_PAGE: CartPage,
+};
+
 const booksUrl = 'https://raw.githubusercontent.com/IOINITID/book-store/master/src/assets/api/books.json';
 
-export { ActionTypes, booksUrl };
+export { ActionTypes, booksUrl, RoutePath };
