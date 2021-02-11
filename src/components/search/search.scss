@@ -31,6 +31,7 @@
 
 .search__input--active {
   border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 0 0 1px #bcb3b4;
 }
 
 .search__input::placeholder {
@@ -65,14 +66,22 @@
   box-shadow: inset 0 0 0 1px #bcb3b4;
 }
 
-.search__item {
+.search__item:first-child {
   display: grid;
   row-gap: 4px;
   padding: 8px 0;
   box-shadow: inset 0 1px 0 0 #bbbbbb, inset 0 -1px 0 0 #bbbbbb;
 }
 
+.search__item {
+  display: grid;
+  row-gap: 4px;
+  padding: 8px 0;
+  box-shadow: inset 0 -1px 0 0 #bbbbbb;
+}
+
 .search__item-title {
+  grid-row: 1/2;
   margin: 0;
   font-weight: 400;
   font-size: 14px;
@@ -81,11 +90,29 @@
 }
 
 .search__item-author {
+  grid-row: 2/3;
   margin: 0;
   font-weight: 300;
   font-size: 12px;
   line-height: 14px;
   color: #8d8d8d;
+}
+
+.search__item-link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  text-decoration: none;
+}
+
+.search__item-icon {
+  align-self: center;
+  justify-self: end;
+  grid-row: 1/3;
+  transform: rotate(180deg);
+}
+
+.search__item-icon path {
+  fill: #bbbbbb;
 }
 
 @media (max-width: 1344px) {
