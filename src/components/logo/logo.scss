@@ -1,5 +1,5 @@
 .logo {
-  margin-right: 220px;
+  display: grid;
 }
 
 .logo__icon {
@@ -8,10 +8,6 @@
 }
 
 @media (max-width: 1344px) {
-  .logo {
-    margin-right: 40px;
-  }
-
   .logo__icon {
     width: 136px;
     height: 16px;
@@ -19,10 +15,6 @@
 }
 
 @media (max-width: 704px) {
-  .logo {
-    margin-right: 15px;
-  }
-
   .logo__icon {
     width: 28px;
     height: 21px;

@@ -1,16 +1,10 @@
 .search {
   position: relative;
-  width: 100%;
-  max-width: 536px;
-  margin-right: 240px;
-}
-
-.search__label {
+  display: grid;
   width: 100%;
 }
 
 .search__input {
-  display: flex;
   align-items: center;
   width: 100%;
   padding: 8px 56px 8px 56px;
@@ -120,14 +114,12 @@
 @media (max-width: 1344px) {
   .search {
     max-width: 320px;
-    margin-right: 60px;
   }
 }
 
 @media (max-width: 704px) {
   .search {
     max-width: 112px;
-    margin-right: 16px;
   }
 
   .search__input {

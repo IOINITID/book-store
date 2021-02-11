@@ -1,19 +1,22 @@
 .header {
-  padding: 26px 0 46px 0;
+  padding: 24px 0;
   background: #e9e7e7;
   box-shadow: inset 0 -1px 0 0 #bbbbbb;
 }
 
 .header__container {
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: auto 1fr auto;
   max-width: 1312px;
   margin: 0 auto;
+  column-gap: 220px;
 }
 
 @media (max-width: 1344px) {
   .header__container {
     max-width: 672px;
+    column-gap: 56px;
   }
 }
 
@@ -24,5 +27,6 @@
 
   .header__container {
     max-width: 272px;
+    column-gap: 16px;
   }
 }

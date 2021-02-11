@@ -1,0 +1,36 @@
+.menu-item {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: #da6551;
+  border-radius: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #db8070;
+  }
+
+  &:active {
+    background-color: #d23c21;
+  }
+}
+
+.menu-item__quantity {
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #da6551;
+  background: #ffffff;
+  border-radius: 100%;
+}

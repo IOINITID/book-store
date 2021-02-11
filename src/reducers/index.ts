@@ -5,7 +5,7 @@ const initialState = {
   isModalOpen: false,
   modalData: null,
   cartBooks: [],
-  cartFavorite: 0,
+  favoriteQuantity: 0,
   cartQuantity: 0,
   cartTotalPrice: 0,
   searchValue: '',
@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
           }
           return { ...book };
         }),
-        cartFavorite: state.books.slice().filter((book) => book.favorite).length,
+        favoriteQuantity: state.books.slice().filter((book) => book.favorite).length,
       };
     case ActionTypes.ADD_TO_CART:
       // eslint-disable-next-line no-case-declarations
