@@ -1,10 +1,24 @@
 .cart__page {
   display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: auto 1fr auto;
   max-width: 1312px;
   margin: 0 auto;
+  column-gap: 152px;
+  row-gap: 40px;
+}
+
+.cart__page-title {
+  grid-column: 1/-1;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #5e5e5e;
 }
 
 .cart__page ul {
+  grid-column: 1/-1;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -66,7 +80,11 @@
 }
 
 .cart__quantity {
-  text-align: center;
+  justify-self: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #5e5e5e;
 }
 
 .cart__button {
@@ -122,4 +140,24 @@
 
 .cart__remove:active svg path {
   fill: #d23c21;
+}
+
+.cart__total-title {
+  justify-self: end;
+  grid-column: -2/-3;
+  grid-row: -1/-2;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #5e5e5e;
+}
+
+.cart__total-value {
+  justify-self: end;
+  grid-column: -2/-1;
+  grid-row: -1/-2;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #db8070;
 }

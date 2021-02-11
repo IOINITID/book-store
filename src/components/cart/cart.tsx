@@ -12,7 +12,7 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
 
   return (
     <div className="cart__page">
-      <h2>Корзина</h2>
+      <h2 className="cart__page-title">Корзина</h2>
       <ul>
         {cartBooks.map((book, index) => {
           return (
@@ -38,8 +38,8 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
           );
         })}
       </ul>
-      <span>Итого</span>
-      <span>1 116 ₽</span>
+      <span className="cart__total-title">Итого</span>
+      <span className="cart__total-value">1 116 ₽</span>
     </div>
   );
 };
