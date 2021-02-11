@@ -36,4 +36,13 @@ interface IBookRating {
   className?: string;
 }
 
-export { IBook, IBookCover, IBookInfo, IBookRating };
+interface IApp {
+  isModalOpen: boolean;
+}
+
+interface IBookList {
+  booksData: IBook[];
+  loadBooks: (books) => void;
+}
+
+export { IBook, IBookCover, IBookInfo, IBookRating, IApp, IBookList };

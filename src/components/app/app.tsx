@@ -7,10 +7,7 @@ import MainPage from '../../pages/main/main';
 import CartPage from '../../pages/cart/cart';
 import Header from '../header/header';
 import { RoutePath } from '../../utils/constants';
-
-interface IApp {
-  isModalOpen: boolean;
-}
+import { IApp } from '../../interfaces';
 
 const App = (props: IApp) => {
   const { isModalOpen } = props;

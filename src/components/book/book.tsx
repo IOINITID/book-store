@@ -8,7 +8,7 @@ import { showModalAction } from '../../actions';
 
 const Book = (props: { book: IBook; showModal: (id) => void }) => {
   const {
-    book: { id, title, author, publisher, release, pages, cover, age, image, rating, price, genres, description },
+    book: { id, title, author, image, rating, price, genres },
     showModal,
   } = props;
 

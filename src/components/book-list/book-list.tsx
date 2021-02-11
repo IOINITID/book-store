@@ -8,14 +8,9 @@ import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
 import { connect } from 'react-redux';
 import { loadBooksAction } from '../../actions';
-import { IBook } from '../../interfaces';
+import { IBookList } from '../../interfaces';
 
 SwiperCore.use([Navigation]);
-
-interface IBookList {
-  booksData: IBook[];
-  loadBooks: (books) => void;
-}
 
 const BookList = (props: IBookList) => {
   const { booksData, loadBooks } = props;

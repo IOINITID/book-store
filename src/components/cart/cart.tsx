@@ -3,6 +3,9 @@ import './cart.scss';
 import { connect } from 'react-redux';
 import { addToCartAction, removeFromCartAction } from '../../actions';
 import { IBook } from '../../interfaces';
+import DeleteIcon from '../../assets/images/delete-icon.svg';
+import MinusIcon from '../../assets/images/minus-icon.svg';
+import PlusIcon from '../../assets/images/plus-icon.svg';
 
 const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCart: (id) => void }) => {
   const { cartBooks, addToCart, removeFromCart } = props;
@@ -18,18 +21,18 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
               <img className="cart__image" src={`images/${book.image}-1.jpg`} width="136" height="160" alt="" />
               <p className="cart__title">{book.title}</p>
               <p className="cart__author">{book.author}</p>
-              <div className="cart__quantity">
+              <div className="cart__controls">
                 <button className="cart__button" type="button" onClick={() => removeFromCart(book.id)}>
-                  -
+                  <MinusIcon />
                 </button>
-                <span>{book.quantity}</span>
+                <span className="cart__quantity">{book.quantity}</span>
                 <button className="cart__button" type="button" onClick={() => addToCart(book.id)}>
-                  +
+                  <PlusIcon />
                 </button>
               </div>
               <p className="cart__price">{book.price} ₽</p>
               <button className="cart__remove" type="button">
-                -
+                <DeleteIcon />
               </button>
             </li>
           );

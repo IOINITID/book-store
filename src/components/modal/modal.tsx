@@ -36,21 +36,7 @@ interface IModal {
 
 const Modal = (props: IModal) => {
   const { modalData, closeModal, toggleFavorite, addToCart } = props;
-  const {
-    id,
-    title,
-    image,
-    author,
-    publisher,
-    release,
-    pages,
-    cover,
-    age,
-    rating,
-    price,
-    genres,
-    description,
-  } = modalData[0];
+  const { id, title, image, author, publisher, release, pages, cover, age, price, genres, description } = modalData[0];
 
   const modalRef = useRef(null);
   const imageRef = useRef(null);
