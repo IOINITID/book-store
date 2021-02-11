@@ -15,11 +15,13 @@ const App = (props: IApp) => {
   return (
     <BrowserRouter>
       <Header />
-      <Switch>
-        <Route path={RoutePath.MAIN_PAGE} component={MainPage} exact />
-        <Route path={RoutePath.MAIN_PAGE_INDEX} component={MainPage} exact />
-        <Route path={RoutePath.CART_PAGE} component={CartPage} exact />
-      </Switch>
+      <main className="main">
+        <Switch>
+          <Route path={RoutePath.MAIN_PAGE} component={MainPage} exact />
+          <Route path={RoutePath.MAIN_PAGE_INDEX} component={MainPage} exact />
+          <Route path={RoutePath.CART_PAGE} component={CartPage} exact />
+        </Switch>
+      </main>
       {isModalOpen && <Modal />}
     </BrowserRouter>
   );

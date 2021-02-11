@@ -1,5 +1,5 @@
 .header {
-  margin-bottom: 56px;
+  padding: 26px 0 46px 0;
   background: #e9e7e7;
   box-shadow: inset 0 -1px 0 0 #bbbbbb;
 }
@@ -9,22 +9,20 @@
   align-items: center;
   max-width: 1312px;
   margin: 0 auto;
-  padding: 26px 0 46px 0;
 }
 
 @media (max-width: 1344px) {
-  .header {
-    margin-bottom: 24px;
-  }
-
   .header__container {
     max-width: 672px;
   }
 }
 
 @media (max-width: 704px) {
+  .header {
+    padding: 8px 0;
+  }
+
   .header__container {
     max-width: 272px;
-    padding: 8px 0;
   }
 }

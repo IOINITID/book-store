@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './cart.scss';
 import { connect } from 'react-redux';
 import { addToCartAction, removeFromCartAction } from '../../actions';
@@ -7,12 +7,17 @@ import DeleteIcon from '../../assets/images/delete-icon.svg';
 import MinusIcon from '../../assets/images/minus-icon.svg';
 import PlusIcon from '../../assets/images/plus-icon.svg';
 
-const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCart: (id) => void }) => {
-  const { cartBooks, addToCart, removeFromCart } = props;
+const Cart = (props: {
+  cartBooks: IBook[];
+  addToCart: (id) => void;
+  removeFromCart: (id) => void;
+  cartTotalPrice: number;
+}) => {
+  const { cartBooks, addToCart, removeFromCart, cartTotalPrice } = props;
 
   return (
     <div className="cart__page">
-      <h2 className="cart__page-title">Корзина</h2>
+      <h2 className="cart__page-title">{cartBooks.length ? 'Корзина' : 'Ваша корзина пуста'}</h2>
       <ul>
         {cartBooks.map((book, index) => {
           return (
@@ -38,8 +43,12 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
           );
         })}
       </ul>
-      <span className="cart__total-title">Итого</span>
-      <span className="cart__total-value">1 116 ₽</span>
+      {cartBooks.length ? (
+        <Fragment>
+          <span className="cart__total-title">Итого</span>
+          <span className="cart__total-value">{cartTotalPrice.toLocaleString()} ₽</span>
+        </Fragment>
+      ) : null}
     </div>
   );
 };
@@ -47,6 +56,7 @@ const Cart = (props: { cartBooks: IBook[]; addToCart: (id) => void; removeFromCa
 const mapStateToProps = (state) => {
   return {
     cartBooks: state.cartBooks,
+    cartTotalPrice: state.cartTotalPrice,
   };
 };
 
