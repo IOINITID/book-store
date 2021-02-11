@@ -24,25 +24,20 @@ const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
     );
   });
 
+  const onButtonClick = (evt) => {
+    evt.stopPropagation();
+    addToCart(id);
+  };
+
   return (
     <div className="info">
       <h3 className="title">{title}</h3>
       <p className="author">{author}</p>
       <ul className="genre-list">{genresItems}</ul>
-      <div className="cart">
-        <span className="price">{price.toLocaleString()} ₽</span>
-        <button
-          className="button-buy"
-          type="button"
-          title="Добавить в корзину"
-          onClick={(evt) => {
-            evt.stopPropagation();
-            addToCart(id);
-          }}
-        >
-          <CartIcon width="12" height="13" />
-        </button>
-      </div>
+      <span className="price">{price.toLocaleString()} ₽</span>
+      <button className="button-buy" type="button" title="Добавить в корзину" onClick={onButtonClick}>
+        <CartIcon width="11" height="13" />
+      </button>
     </div>
   );
 };
