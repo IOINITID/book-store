@@ -14,7 +14,6 @@ const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
 
   const genresItems = genres.map((item, index) => {
     const background = getColorByGenre(item);
-
     return (
       <li className="genre-item" key={item + index}>
         <span className="genre" style={{ backgroundColor: background }}>
