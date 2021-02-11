@@ -8,6 +8,8 @@ const initialState = {
   cartFavorite: 0,
   cartQuantity: 0,
   cartTotalPrice: 0,
+  searchValue: '',
+  isSearching: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +22,8 @@ const reducer = (state = initialState, action) => {
         modalData: state.books.slice().filter((book) => book.id === action.payload),
         isModalOpen: true,
       };
+    case ActionTypes.SEARCH_CHANGE:
+      return { ...state, searchValue: action.payload, isSearching: action.payload ? true : false };
     case ActionTypes.CLOSE_MODAL:
       return {
         ...state,

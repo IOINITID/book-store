@@ -29,6 +29,10 @@
   box-shadow: inset 0 0 0 1px #bcb3b4;
 }
 
+.search__input--active {
+  border-radius: 4px 4px 0 0;
+}
+
 .search__input::placeholder {
   color: #c9c2c3;
 }
@@ -48,10 +52,9 @@
 
 .search__list {
   position: absolute;
-  top: 32px;
+  top: 31px;
   left: 0;
   z-index: 2;
-  display: none;
   width: 100%;
   height: auto;
   margin: 0;
@@ -59,12 +62,30 @@
   list-style: none;
   background-color: #ffffff;
   border-radius: 0 0 4px 4px;
-  box-shadow: 0 0 1px 0 #bbbbbb;
+  box-shadow: inset 0 0 0 1px #bcb3b4;
 }
 
-.search__list li {
+.search__item {
+  display: grid;
+  row-gap: 4px;
   padding: 8px 0;
   box-shadow: inset 0 1px 0 0 #bbbbbb, inset 0 -1px 0 0 #bbbbbb;
+}
+
+.search__item-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #787878;
+}
+
+.search__item-author {
+  margin: 0;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  color: #8d8d8d;
 }
 
 @media (max-width: 1344px) {
