@@ -6,3 +6,9 @@
   list-style: none;
   column-gap: 24px;
 }
+
+@media (max-width: 704px) {
+  .menu-list {
+    column-gap: 20px;
+  }
+}

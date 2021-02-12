@@ -1,8 +1,12 @@
 .cover {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
   background-color: #d4d4d4;
 }
 
 .cover__image {
   object-fit: cover;
+  grid-column: 1/3;
+  grid-row: 1/3;
 }
