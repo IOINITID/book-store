@@ -161,3 +161,20 @@
   line-height: 28px;
   color: #db8070;
 }
+
+@media (max-width: 1344px) {
+  .cart__page {
+    max-width: 672px;
+  }
+}
+
+@media (max-width: 704px) {
+  .cart__page {
+    max-width: 272px;
+  }
+
+  .cart__page-title {
+    font-size: 20px;
+    line-height: 23px;
+  }
+}
