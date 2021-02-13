@@ -48,7 +48,7 @@ const Search = (props: {
         <input
           className={`search__input ${searchListData.length ? 'search__input--active' : null}`}
           type="search"
-          placeholder="Искать книгу"
+          placeholder="Поиск"
           onChange={onInputChange}
         />
         <SearchIcon className="search__icon" />

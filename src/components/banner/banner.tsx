@@ -39,11 +39,18 @@ const Banner = (props: { showModal: (id) => void }) => {
         <div className="banner">
           <a className="banner__link" href="#ref" onClick={() => showModal(banner.id)}>
             <picture>
-              <source media="(min-width: 1344px)" srcSet={`images/${banner.image}-banner-desktop.jpg`} />
-              <source media="(min-width: 704px)" srcSet={`images/${banner.image}-banner-tablet.jpg`} />
+              <source
+                media="(min-width: 1344px)"
+                srcSet={`images/${banner.image}-banner-desktop@1x.jpg 1x, images/${banner.image}-banner-desktop@2x.jpg 2x`}
+              />
+              <source
+                media="(min-width: 704px)"
+                srcSet={`images/${banner.image}-banner-tablet@1x.jpg 1x, images/${banner.image}-banner-tablet@2x.jpg 2x`}
+              />
               <img
                 className="banner__image"
-                src={`images/${banner.image}-banner-mobile.jpg`}
+                src={`images/${banner.image}-banner-mobile@1x.jpg`}
+                srcSet={`images/${banner.image}-banner-mobile@1x.jpg 1x, images/${banner.image}-banner-mobile@2x.jpg 2x`}
                 alt={`Баннер книги ${banner.title}.`}
               />
             </picture>
