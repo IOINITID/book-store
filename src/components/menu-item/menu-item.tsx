@@ -14,7 +14,7 @@ const MenuItem = (props: IMenuItem) => {
   const { type, quantity } = props;
 
   return (
-    <Link to={type === 'favorite' ? '' : RoutePath.CART_PAGE} className="menu-item">
+    <Link to={type === 'favorite' ? RoutePath.MAIN_PAGE : RoutePath.CART_PAGE} className="menu-item">
       <span className="menu-item__quantity">{quantity}</span>
       {type && type === 'favorite' ? <FavoriteIcon width="18" height="16" /> : <CartIcon width="14" height="16" />}
     </Link>
