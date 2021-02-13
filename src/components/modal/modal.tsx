@@ -151,30 +151,26 @@ const Modal = (props: IModal) => {
               const background = getColorByGenre(genre);
 
               return (
-                <li className="modal__genre-item" key={genre + index}>
-                  <span className="modal__genre" style={{ backgroundColor: background }}>
-                    {genre}
-                  </span>
+                <li className="modal__genre-item" key={genre + index} style={{ backgroundColor: background }}>
+                  {genre}
                 </li>
               );
             })}
           </ul>
           <h3 className="modal__description">Описание</h3>
           <p className="modal__description-text">{description}</p>
-          <div className="modal__actions">
-            <span className="modal__price">{price} ₽</span>
-            <button className="modal__cart" type="button" title="Добавить в корзину" onClick={() => addToCart(id)}>
-              Добавить в корзину
-            </button>
-            <button
-              className="modal__favorite"
-              type="button"
-              title="Добавить в избранное"
-              onClick={() => toggleFavorite(id)}
-            >
-              <FavoriteModalIcon width="20" height="18" />
-            </button>
-          </div>
+          <span className="modal__price">{price} ₽</span>
+          <button className="modal__cart" type="button" title="Добавить в корзину" onClick={() => addToCart(id)}>
+            Добавить в корзину
+          </button>
+          <button
+            className="modal__favorite"
+            type="button"
+            title="Добавить в избранное"
+            onClick={() => toggleFavorite(id)}
+          >
+            <FavoriteModalIcon width="20" height="18" />
+          </button>
         </div>
       </div>
     </div>
