@@ -2,7 +2,7 @@ import React from 'react';
 import './app.scss';
 import Modal from '../modal/modal';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import MainPage from '../../pages/main/main';
 import CartPage from '../../pages/cart/cart';
 import Header from '../header/header';
@@ -13,7 +13,7 @@ const App = (props: IApp) => {
   const { isModalOpen } = props;
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <main className="main">
         <Switch>
@@ -23,7 +23,7 @@ const App = (props: IApp) => {
         </Switch>
       </main>
       {isModalOpen && <Modal />}
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
