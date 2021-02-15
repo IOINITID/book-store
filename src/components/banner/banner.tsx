@@ -68,6 +68,7 @@ const Banner = (props: { showModal: (id) => void }) => {
         spaceBetween={0}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
+        updateOnWindowResize={false}
       >
         {banners}
         <div className="swiper-pagination"></div>

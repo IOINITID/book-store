@@ -65,6 +65,7 @@ const Modal = (props: IModal) => {
       slidesPerView={1}
       spaceBetween={16}
       loop={true}
+      updateOnWindowResize={false}
     >
       {[1, 2, 3, 4].map((item) => {
         return (

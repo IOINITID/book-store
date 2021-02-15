@@ -41,6 +41,7 @@ const BookList = (props: IBookList) => {
       initialSlide={4}
       breakpoints={{ 704: { slidesPerView: 2 }, 1344: { slidesPerView: 4 } }}
       simulateTouch={false}
+      updateOnWindowResize={false}
     >
       {books}
       <button className="swiper-button-prev">
