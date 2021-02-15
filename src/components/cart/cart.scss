@@ -171,6 +171,48 @@
 @media (max-width: 704px) {
   .cart__page {
     max-width: 272px;
+    column-gap: 56px;
+    row-gap: 24px;
+
+    ul {
+      li {
+        grid-template-columns: min-content 1fr min-content;
+        column-gap: 16px;
+
+        .cart__id {
+          display: none;
+        }
+      }
+    }
+
+    .cart__image {
+      justify-self: center;
+      grid-column: 1/2;
+      grid-row: 1/5;
+    }
+
+    .cart__title {
+      grid-column: 2/4;
+    }
+
+    .cart__author {
+      grid-column: 2/4;
+    }
+
+    .cart__controls {
+      justify-content: unset;
+      grid-column: 2/4;
+    }
+
+    .cart__price {
+      justify-self: unset;
+      grid-column: 2/3;
+    }
+
+    .cart__remove {
+      justify-self: end;
+      grid-column: 3/4;
+    }
   }
 
   .cart__page-title {
