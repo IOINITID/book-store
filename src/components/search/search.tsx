@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './search.scss';
 import SearchIcon from '../../assets/images/search-icon.svg';
 import { connect } from 'react-redux';
@@ -42,14 +42,30 @@ const Search = (props: {
     </ul>
   ) : null;
 
+  const formRef = useRef(null);
+
+  const onFormCloseClick = (evt) => {
+    evt.preventDefault();
+
+    if (!formRef.current.contains(evt.target)) {
+      onSearchChange('');
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', onFormCloseClick);
+    return () => document.removeEventListener('click', onFormCloseClick);
+  }, []);
+
   return (
-    <form className="search" action="#">
+    <form className="search" action="#" ref={formRef}>
       <label className="search__label" htmlFor="">
         <input
           className={`search__input ${searchListData.length ? 'search__input--active' : null}`}
           type="search"
           placeholder="Поиск"
           onChange={onInputChange}
+          value={searchValue}
         />
         <SearchIcon className="search__icon" />
         {searchList}

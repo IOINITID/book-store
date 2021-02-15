@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         modalData: state.books.slice().filter((book) => book.id === action.payload),
         isModalOpen: true,
+        searchValue: '',
       };
     case ActionTypes.SEARCH_CHANGE:
       return { ...state, searchValue: action.payload, isSearching: action.payload ? true : false };
