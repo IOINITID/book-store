@@ -7,14 +7,15 @@ import { connect } from 'react-redux';
 import { onSearchChangeAction } from '../../actions';
 
 const Header = ({ isSearching, onSearchChange }: { isSearching: boolean; onSearchChange: (searchData) => void }) => {
-  const isMobile = window.matchMedia('(max-width: 1343px)').matches;
+  const isMobile = window.matchMedia('(max-width: 703px)').matches;
+  const isTablet = window.matchMedia('(max-width: 1343px)').matches;
 
   return (
     <header className="header">
       <div className="header__container">
         {isSearching && isMobile ? null : <Logo />}
         <Search />
-        {isSearching && isMobile ? (
+        {isSearching && (isMobile || isTablet) ? (
           <a href="#ref" className="header__close" onClick={() => onSearchChange('')}>
             Отменить
           </a>
