@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import './search.scss';
 import SearchIcon from '../../assets/images/search-icon.svg';
 import { connect } from 'react-redux';
@@ -26,6 +26,8 @@ const Search = (props: {
 
   const searchListData = onSearch(booksData, searchValue);
 
+  const isMobile = window.matchMedia('(max-width: 1343px)').matches;
+
   const searchList = searchListData.length ? (
     <ul className="search__list">
       {searchListData.map((book, index) => {
@@ -42,12 +44,36 @@ const Search = (props: {
     </ul>
   ) : null;
 
+  const searchListMobile = searchListData.length ? (
+    <ul className="search__list search__list--mobile">
+      <p className="search__result">Результаты поиска</p>
+      {searchListData.map((book, index) => {
+        return (
+          <li className="search__item" key={book.title + index}>
+            <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
+              <img
+                className="search__item-image "
+                src={`images/${book.image}-1.jpg`}
+                alt={`Обложка книги ${book.title} .`}
+                width="88"
+                height="104"
+              />
+              <p className="search__item-title">{book.title}</p>
+              <p className="search__item-author">{book.author}</p>
+              <ArrowIcon className="search__item-icon" />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  ) : null;
+
   const formRef = useRef(null);
 
   const onFormCloseClick = (evt) => {
     evt.preventDefault();
 
-    if (!formRef.current.contains(evt.target)) {
+    if (!formRef.current.contains(evt.target) && !isMobile) {
       onSearchChange('');
     }
   };
@@ -56,21 +82,23 @@ const Search = (props: {
     document.addEventListener('click', onFormCloseClick);
     return () => document.removeEventListener('click', onFormCloseClick);
   }, []);
-
   return (
-    <form className="search" action="#" ref={formRef}>
-      <label className="search__label" htmlFor="">
-        <input
-          className={`search__input ${searchListData.length ? 'search__input--active' : null}`}
-          type="search"
-          placeholder="Поиск"
-          onChange={onInputChange}
-          value={searchValue}
-        />
-        <SearchIcon className="search__icon" />
-        {searchList}
-      </label>
-    </form>
+    <Fragment>
+      <form className="search" action="#" ref={formRef}>
+        <label className="search__label" htmlFor="">
+          <input
+            className={`search__input ${searchListData.length && !isMobile ? 'search__input--active' : null}`}
+            type="search"
+            placeholder="Поиск"
+            onChange={onInputChange}
+            value={searchValue}
+          />
+          {!isMobile && searchList}
+          <SearchIcon className="search__icon" />
+        </label>
+      </form>
+      {isMobile && searchListMobile}
+    </Fragment>
   );
 };
 
