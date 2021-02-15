@@ -12,7 +12,7 @@ const Header = ({ isSearching, onSearchChange }: { isSearching: boolean; onSearc
   return (
     <header className="header">
       <div className="header__container">
-        <Logo />
+        {isSearching && isMobile ? null : <Logo />}
         <Search />
         {isSearching && isMobile ? (
           <a href="#ref" className="header__close" onClick={() => onSearchChange('')}>

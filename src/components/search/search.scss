@@ -119,6 +119,7 @@
 
   .search__list--mobile {
     top: 80px;
+    height: 100%;
     padding: 40px 48px;
     box-shadow: none;
 
@@ -168,9 +169,9 @@
 }
 
 @media (max-width: 704px) {
-  .search {
-    max-width: 112px;
-  }
+  // .search {
+  //   max-width: 112px;
+  // }
 
   .search__list--mobile {
     top: 46px;
