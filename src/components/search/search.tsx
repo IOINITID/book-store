@@ -10,8 +10,9 @@ const Search = (props: {
   booksData: [];
   searchValue: string;
   showModal: (id) => void;
+  isSearching: boolean;
 }) => {
-  const { onSearchChange, booksData, searchValue, showModal } = props;
+  const { onSearchChange, booksData, searchValue, showModal, isSearching } = props;
   const onInputChange = (evt) => {
     onSearchChange(evt.target.value);
   };
@@ -28,43 +29,50 @@ const Search = (props: {
 
   const isMobile = window.matchMedia('(max-width: 1343px)').matches;
 
-  const searchList = searchListData.length ? (
+  const searchList = isSearching ? (
     <ul className="search__list">
-      {searchListData.map((book, index) => {
-        return (
-          <li className="search__item" key={book.title + index}>
-            <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
-              <p className="search__item-title">{book.title}</p>
-              <p className="search__item-author">{book.author}</p>
-              <ArrowIcon className="search__item-icon" />
-            </a>
-          </li>
-        );
-      })}
+      <p className="search__result">
+        {searchListData.length ? 'Результаты поиска' : 'По вашему запросу ничего не найдено'}
+      </p>
+      {searchListData &&
+        searchListData.map((book, index) => {
+          return (
+            <li className="search__item" key={book.title + index}>
+              <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
+                <p className="search__item-title">{book.title}</p>
+                <p className="search__item-author">{book.author}</p>
+                <ArrowIcon className="search__item-icon" />
+              </a>
+            </li>
+          );
+        })}
     </ul>
   ) : null;
 
-  const searchListMobile = searchListData.length ? (
+  const searchListMobile = isSearching ? (
     <ul className="search__list search__list--mobile">
-      <p className="search__result">Результаты поиска</p>
-      {searchListData.map((book, index) => {
-        return (
-          <li className="search__item" key={book.title + index}>
-            <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
-              <img
-                className="search__item-image "
-                src={`images/${book.image}-1.jpg`}
-                alt={`Обложка книги ${book.title} .`}
-                width="88"
-                height="104"
-              />
-              <p className="search__item-title">{book.title}</p>
-              <p className="search__item-author">{book.author}</p>
-              <ArrowIcon className="search__item-icon" />
-            </a>
-          </li>
-        );
-      })}
+      <p className="search__result">
+        {searchListData.length ? 'Результаты поиска' : 'По вашему запросу ничего не найдено'}
+      </p>
+      {searchListData &&
+        searchListData.map((book, index) => {
+          return (
+            <li className="search__item" key={book.title + index}>
+              <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
+                <img
+                  className="search__item-image "
+                  src={`images/${book.image}-1.jpg`}
+                  alt={`Обложка книги ${book.title} .`}
+                  width="88"
+                  height="104"
+                />
+                <p className="search__item-title">{book.title}</p>
+                <p className="search__item-author">{book.author}</p>
+                <ArrowIcon className="search__item-icon" />
+              </a>
+            </li>
+          );
+        })}
     </ul>
   ) : null;
 
@@ -106,6 +114,7 @@ const mapStateToProps = (state) => {
   return {
     booksData: state.books,
     searchValue: state.searchValue,
+    isSearching: state.isSearching,
   };
 };
 
