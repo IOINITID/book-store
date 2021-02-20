@@ -5,7 +5,6 @@ import CloseIcon from '../../assets/images/close-icon.svg';
 import { connect } from 'react-redux';
 import { addToCartAction, toggleFavoriteAction, closeModalAction } from '../../actions';
 import { getColorByGenre } from '../../utils/common';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay, Navigation } from 'swiper';
 import 'swiper/swiper.scss';
@@ -13,30 +12,32 @@ import ArrowIcon from '../../assets/images/arrow-icon.svg';
 
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 
-interface IModal {
-  modalData: {
-    id: string;
-    title: string;
-    author: string;
-    publisher: string;
-    release: number;
-    pages: number;
-    cover: string;
-    age: number;
-    image: string;
-    rating: number;
-    price: number;
-    genres: string[];
-    description: string;
-  };
-  closeModal: () => void;
-  toggleFavorite: (id) => void;
-  addToCart: (id) => void;
+interface IModalData {
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
 }
 
-const Modal = (props: IModal) => {
-  const { modalData, closeModal, toggleFavorite, addToCart } = props;
-  const { id, title, image, author, publisher, release, pages, cover, age, price, genres, description } = modalData[0];
+interface IModal {
+  modalData: IModalData;
+  books: [];
+  closeModal: () => void;
+  toggleFavorite: (id, books) => void;
+  addToCart: (id, books) => void;
+}
+
+const Modal = ({ modalData, books, closeModal, toggleFavorite, addToCart }: IModal) => {
+  const { id, title, image, author, publisher, release, pages, cover, age, price, genres, description } = modalData;
 
   const modalRef = useRef(null);
   const imageRef = useRef(null);
@@ -161,14 +162,14 @@ const Modal = (props: IModal) => {
           <h3 className="modal__description">Описание</h3>
           <p className="modal__description-text">{description}</p>
           <span className="modal__price">{price} ₽</span>
-          <button className="modal__cart" type="button" title="Добавить в корзину" onClick={() => addToCart(id)}>
+          <button className="modal__cart" type="button" title="Добавить в корзину" onClick={() => addToCart(id, books)}>
             Добавить в корзину
           </button>
           <button
             className="modal__favorite"
             type="button"
             title="Добавить в избранное"
-            onClick={() => toggleFavorite(id)}
+            onClick={() => toggleFavorite(id, books)}
           >
             <FavoriteModalIcon width="20" height="18" />
           </button>
@@ -180,15 +181,16 @@ const Modal = (props: IModal) => {
 
 const mapStateToProps = (state) => {
   return {
-    modalData: state.default.modalData,
+    modalData: state.modal.modalData,
+    books: state.books.books,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModalAction()),
-    toggleFavorite: (id) => dispatch(toggleFavoriteAction(id)),
-    addToCart: (id) => dispatch(addToCartAction(id)),
+    toggleFavorite: (id, books) => dispatch(toggleFavoriteAction(id, books)),
+    addToCart: (id, books) => dispatch(addToCartAction(id, books)),
   };
 };
 

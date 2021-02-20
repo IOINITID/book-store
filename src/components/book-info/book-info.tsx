@@ -6,10 +6,11 @@ import { IBookInfo } from '../../interfaces';
 import { connect } from 'react-redux';
 import { addToCartAction } from '../../actions';
 
-const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
+const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id, books) => void; books: [] }) => {
   const {
     bookInfo: { id, title, author, price, genres },
     addToCart,
+    books,
   } = props;
 
   const genresItems = genres.map((item, index) => {
@@ -25,7 +26,7 @@ const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
 
   const onButtonClick = (evt) => {
     evt.stopPropagation();
-    addToCart(id);
+    addToCart(id, books);
   };
 
   return (
@@ -41,10 +42,16 @@ const BookInfo = (props: { bookInfo: IBookInfo; addToCart: (id) => void }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    addToCart: (id) => dispatch(addToCartAction(id)),
+    books: state.books.books,
   };
 };
 
-export default connect(null, mapDispatchToProps)(BookInfo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id, books) => dispatch(addToCartAction(id, books)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookInfo);

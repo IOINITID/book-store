@@ -9,11 +9,12 @@ import PlusIcon from '../../assets/images/plus-icon.svg';
 
 const Cart = (props: {
   cartBooks: IBook[];
-  addToCart: (id) => void;
-  removeFromCart: (id) => void;
+  addToCart: (id, books) => void;
+  removeFromCart: (id, books) => void;
   cartTotalPrice: number;
+  books: [];
 }) => {
-  const { cartBooks, addToCart, removeFromCart, cartTotalPrice } = props;
+  const { cartBooks, addToCart, removeFromCart, cartTotalPrice, books } = props;
 
   return (
     <div className="cart__page">
@@ -27,11 +28,11 @@ const Cart = (props: {
               <p className="cart__title">{book.title}</p>
               <p className="cart__author">{book.author}</p>
               <div className="cart__controls">
-                <button className="cart__button" type="button" onClick={() => removeFromCart(book.id)}>
+                <button className="cart__button" type="button" onClick={() => removeFromCart(book.id, books)}>
                   <MinusIcon />
                 </button>
                 <span className="cart__quantity">{book.quantity}</span>
-                <button className="cart__button" type="button" onClick={() => addToCart(book.id)}>
+                <button className="cart__button" type="button" onClick={() => addToCart(book.id, books)}>
                   <PlusIcon />
                 </button>
               </div>
@@ -55,15 +56,16 @@ const Cart = (props: {
 
 const mapStateToProps = (state) => {
   return {
-    cartBooks: state.default.cartBooks,
-    cartTotalPrice: state.default.cartTotalPrice,
+    books: state.books.books,
+    cartBooks: state.cart.cartBooks,
+    cartTotalPrice: state.cart.price,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id) => dispatch(addToCartAction(id)),
-    removeFromCart: (id) => dispatch(removeFromCartAction(id)),
+    addToCart: (id, books) => dispatch(addToCartAction(id, books)),
+    removeFromCart: (id, books) => dispatch(removeFromCartAction(id, books)),
   };
 };
 

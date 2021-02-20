@@ -4,17 +4,17 @@ import MenuItem from '../menu-item/menu-item';
 import { connect } from 'react-redux';
 
 interface IMenuList {
-  favoriteQuantity: number;
+  favoritesQuantity: number;
   cartQuantity: number;
 }
 
 const MenuList = (props: IMenuList) => {
-  const { cartQuantity, favoriteQuantity } = props;
+  const { cartQuantity, favoritesQuantity } = props;
 
   return (
     <ul className="menu-list">
       <li className="menu-list__item">
-        <MenuItem type="favorite" quantity={favoriteQuantity} />
+        <MenuItem type="favorite" quantity={favoritesQuantity} />
       </li>
       <li className="menu-list__item">
         <MenuItem type="cart" quantity={cartQuantity} />
@@ -25,8 +25,8 @@ const MenuList = (props: IMenuList) => {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteQuantity: state.default.favoriteQuantity,
-    cartQuantity: state.default.cartQuantity,
+    favoritesQuantity: state.favorites.quantity,
+    cartQuantity: state.cart.quantity,
   };
 };
 

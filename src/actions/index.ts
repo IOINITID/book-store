@@ -7,10 +7,10 @@ const loadBooksAction = (books) => {
   };
 };
 
-const showModalAction = (id) => {
+const showModalAction = (id, books) => {
   return {
     type: ActionTypes.SHOW_MODAL,
-    payload: id,
+    payload: { id, books },
   };
 };
 
@@ -20,24 +20,24 @@ const closeModalAction = () => {
   };
 };
 
-const toggleFavoriteAction = (id) => {
+const toggleFavoriteAction = (id, books) => {
   return {
     type: ActionTypes.TOGGLE_FAVORITE,
-    payload: id,
+    payload: { id, books },
   };
 };
 
-const addToCartAction = (id) => {
+const addToCartAction = (id, books) => {
   return {
     type: ActionTypes.ADD_TO_CART,
-    payload: id,
+    payload: { id, books },
   };
 };
 
-const removeFromCartAction = (id) => {
+const removeFromCartAction = (id, books) => {
   return {
     type: ActionTypes.REMOVE_FROM_CART,
-    payload: id,
+    payload: { id, books },
   };
 };
 

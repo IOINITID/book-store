@@ -2,21 +2,25 @@ import React from 'react';
 import './book.scss';
 import BookCover from '../book-cover/book-cover';
 import BookInfo from '../book-info/book-info';
-import { IBook } from '../../interfaces';
 import { connect } from 'react-redux';
-import { searchChangeAction, showModalAction } from '../../actions';
+import { showModalAction } from '../../actions';
 
-const Book = (props: { book: IBook; showModal: (id) => void; searchChange: (searchValue) => void }) => {
-  const {
-    book: { id, title, author, image, rating, price, genres },
-    showModal,
-    searchChange,
-  } = props;
+interface IBook {
+  id: string;
+  title: string;
+  author: string;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  showModal: (id, books) => void;
+  books: [];
+}
 
+const Book = ({ id, title, author, image, rating, price, genres, showModal, books }: IBook) => {
   const onBookClick = (evt) => {
     evt.preventDefault();
-    showModal(id);
-    searchChange('');
+    showModal(id, books);
   };
 
   return (
@@ -27,11 +31,16 @@ const Book = (props: { book: IBook; showModal: (id) => void; searchChange: (sear
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    showModal: (id) => dispatch(showModalAction(id)),
-    searchChange: (searchValue) => dispatch(searchChangeAction(searchValue)),
+    books: state.books.books,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Book);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showModal: (id, books) => dispatch(showModalAction(id, books)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Book);

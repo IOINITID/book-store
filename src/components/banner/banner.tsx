@@ -31,13 +31,17 @@ const bannerData = [
   },
 ];
 
-const Banner = (props: { showModal: (id) => void }) => {
-  const { showModal } = props;
+interface IBanner {
+  showModal: (id, books) => void;
+  books: [];
+}
+
+const Banner = ({ showModal, books }: IBanner) => {
   const banners = bannerData.map((banner, index) => {
     return (
       <SwiperSlide key={banner.image + index}>
         <div className="banner">
-          <a className="banner__link" href="#ref" onClick={() => showModal(banner.id)}>
+          <a className="banner__link" href="#ref" onClick={() => showModal(banner.id, books)}>
             <picture>
               <source
                 media="(min-width: 1344px)"
@@ -77,10 +81,16 @@ const Banner = (props: { showModal: (id) => void }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    showModal: (id) => dispatch(showModalAction(id)),
+    books: state.books.books,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Banner);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showModal: (id, books) => dispatch(showModalAction(id, books)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Banner);

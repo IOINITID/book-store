@@ -7,11 +7,11 @@ import ArrowIcon from '../../assets/images/arrow-icon.svg';
 
 const Search = (props: {
   searchChange: (searchValue) => void;
-  booksData: [];
+  books: [];
   searchValue: string;
-  showModal: (id) => void;
+  showModal: (id, books) => void;
 }) => {
-  const { searchChange, booksData, searchValue, showModal } = props;
+  const { searchChange, books, searchValue, showModal } = props;
   const onInputChange = (evt) => {
     searchChange(evt.target.value);
   };
@@ -24,7 +24,7 @@ const Search = (props: {
     return [];
   };
 
-  const searchListData = onSearch(booksData, searchValue);
+  const searchListData = onSearch(books, searchValue);
 
   const isMobile = window.matchMedia('(max-width: 1343px)').matches;
 
@@ -41,7 +41,7 @@ const Search = (props: {
                 className="search__item-link"
                 href="#ref"
                 onClick={() => {
-                  showModal(book.id);
+                  showModal(book.id, books);
                   searchChange('');
                 }}
               >
@@ -68,7 +68,7 @@ const Search = (props: {
                 className="search__item-link"
                 href="#ref"
                 onClick={() => {
-                  showModal(book.id);
+                  showModal(book.id, books);
                   searchChange('');
                 }}
               >
@@ -125,7 +125,7 @@ const Search = (props: {
 
 const mapStateToProps = (state) => {
   return {
-    booksData: state.default.books,
+    books: state.books.books,
     searchValue: state.search.searchValue,
   };
 };
@@ -133,7 +133,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchChange: (searchValue) => dispatch(searchChangeAction(searchValue)),
-    showModal: (id) => dispatch(showModalAction(id)),
+    showModal: (id, books) => dispatch(showModalAction(id, books)),
   };
 };
 

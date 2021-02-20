@@ -7,10 +7,14 @@ import MainPage from '../../pages/main/main';
 import CartPage from '../../pages/cart/cart';
 import Header from '../header/header';
 import { RoutePath } from '../../utils/constants';
-import { IApp } from '../../interfaces';
+// import { IApp } from '../../interfaces';
+
+interface IApp {
+  modalData: boolean;
+}
 
 const App = (props: IApp) => {
-  const { isModalOpen } = props;
+  const { modalData } = props;
 
   return (
     <HashRouter>
@@ -22,14 +26,14 @@ const App = (props: IApp) => {
           <Route path={RoutePath.CART_PAGE} component={CartPage} exact />
         </Switch>
       </main>
-      {isModalOpen && <Modal />}
+      {modalData && <Modal />}
     </HashRouter>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    isModalOpen: state.default.isModalOpen,
+    modalData: state.modal.modalData,
   };
 };
 
