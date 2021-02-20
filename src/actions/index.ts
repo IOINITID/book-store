@@ -41,10 +41,10 @@ const removeFromCartAction = (id) => {
   };
 };
 
-const onSearchChangeAction = (searchData = ``) => {
+const searchChangeAction = (searchValue = '') => {
   return {
     type: ActionTypes.SEARCH_CHANGE,
-    payload: searchData,
+    payload: searchValue,
   };
 };
 
@@ -56,5 +56,5 @@ export {
   toggleFavoriteAction,
   addToCartAction,
   removeFromCartAction,
-  onSearchChangeAction,
+  searchChangeAction,
 };

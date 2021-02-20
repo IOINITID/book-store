@@ -2,19 +2,18 @@ import React, { Fragment, useEffect, useRef } from 'react';
 import './search.scss';
 import SearchIcon from '../../assets/images/search-icon.svg';
 import { connect } from 'react-redux';
-import { onSearchChangeAction, showModalAction } from '../../actions';
+import { searchChangeAction, showModalAction } from '../../actions';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
 
 const Search = (props: {
-  onSearchChange: (searchValue) => void;
+  searchChange: (searchValue) => void;
   booksData: [];
   searchValue: string;
   showModal: (id) => void;
-  isSearching: boolean;
 }) => {
-  const { onSearchChange, booksData, searchValue, showModal, isSearching } = props;
+  const { searchChange, booksData, searchValue, showModal } = props;
   const onInputChange = (evt) => {
-    onSearchChange(evt.target.value);
+    searchChange(evt.target.value);
   };
 
   const onSearch = (itemsData, searchValue) => {
@@ -29,7 +28,7 @@ const Search = (props: {
 
   const isMobile = window.matchMedia('(max-width: 1343px)').matches;
 
-  const searchList = isSearching ? (
+  const searchList = searchValue ? (
     <ul className="search__list">
       <p className="search__result">
         {searchListData.length ? 'Результаты поиска' : 'По вашему запросу ничего не найдено'}
@@ -43,7 +42,7 @@ const Search = (props: {
                 href="#ref"
                 onClick={() => {
                   showModal(book.id);
-                  onSearchChange('');
+                  searchChange('');
                 }}
               >
                 <p className="search__item-title">{book.title}</p>
@@ -56,7 +55,7 @@ const Search = (props: {
     </ul>
   ) : null;
 
-  const searchListMobile = isSearching ? (
+  const searchListMobile = searchValue ? (
     <ul className="search__list search__list--mobile">
       <p className="search__result">
         {searchListData.length ? 'Результаты поиска' : 'По вашему запросу ничего не найдено'}
@@ -70,7 +69,7 @@ const Search = (props: {
                 href="#ref"
                 onClick={() => {
                   showModal(book.id);
-                  onSearchChange('');
+                  searchChange('');
                 }}
               >
                 <img
@@ -96,7 +95,7 @@ const Search = (props: {
     evt.preventDefault();
 
     if (!formRef.current.contains(evt.target) && !isMobile) {
-      onSearchChange('');
+      searchChange('');
     }
   };
 
@@ -128,13 +127,12 @@ const mapStateToProps = (state) => {
   return {
     booksData: state.default.books,
     searchValue: state.search.searchValue,
-    isSearching: state.search.isSearching,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (searchValue) => dispatch(onSearchChangeAction(searchValue)),
+    searchChange: (searchValue) => dispatch(searchChangeAction(searchValue)),
     showModal: (id) => dispatch(showModalAction(id)),
   };
 };

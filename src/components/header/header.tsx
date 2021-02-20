@@ -4,19 +4,24 @@ import Logo from '../logo/logo';
 import Search from '../search/search';
 import MenuList from '../menu-list/menu-list';
 import { connect } from 'react-redux';
-import { onSearchChangeAction } from '../../actions';
+import { searchChangeAction } from '../../actions';
 
-const Header = ({ isSearching, onSearchChange }: { isSearching: boolean; onSearchChange: (searchData) => void }) => {
+interface IHeader {
+  searchValue: string;
+  searchChange: (searchValue) => void;
+}
+
+const Header = ({ searchChange, searchValue }: IHeader) => {
   const isMobile = window.matchMedia('(max-width: 703px)').matches;
   const isTablet = window.matchMedia('(max-width: 1343px)').matches;
 
   return (
     <header className="header">
       <div className="header__container">
-        {isSearching && isMobile ? null : <Logo />}
+        {searchValue && isMobile ? null : <Logo />}
         <Search />
-        {isSearching && (isMobile || isTablet) ? (
-          <a href="#ref" className="header__close" onClick={() => onSearchChange('')}>
+        {searchValue && (isMobile || isTablet) ? (
+          <a href="#ref" className="header__close" onClick={() => searchChange('')}>
             Отменить
           </a>
         ) : (
@@ -29,13 +34,13 @@ const Header = ({ isSearching, onSearchChange }: { isSearching: boolean; onSearc
 
 const mapStateToProps = (state) => {
   return {
-    isSearching: state.search.isSearching,
+    searchValue: state.search.searchValue,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (searchData) => dispatch(onSearchChangeAction(searchData)),
+    searchChange: (searchData) => dispatch(searchChangeAction(searchData)),
   };
 };
 

@@ -15,7 +15,6 @@ module.exports = {
     open: true,
     inline: true,
     port: 3000,
-    hot: true,
     host: '0.0.0.0',
     public: 'localhost:3000',
   },
