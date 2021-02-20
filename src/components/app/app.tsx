@@ -29,7 +29,7 @@ const App = (props: IApp) => {
 
 const mapStateToProps = (state) => {
   return {
-    isModalOpen: state.isModalOpen,
+    isModalOpen: state.default.isModalOpen,
   };
 };
 

@@ -180,7 +180,7 @@ const Modal = (props: IModal) => {
 
 const mapStateToProps = (state) => {
   return {
-    modalData: state.modalData,
+    modalData: state.default.modalData,
   };
 };
 

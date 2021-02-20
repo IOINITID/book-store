@@ -29,7 +29,7 @@ const Header = ({ isSearching, onSearchChange }: { isSearching: boolean; onSearc
 
 const mapStateToProps = (state) => {
   return {
-    isSearching: state.isSearching,
+    isSearching: state.search.isSearching,
   };
 };
 

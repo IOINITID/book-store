@@ -38,7 +38,14 @@ const Search = (props: {
         searchListData.map((book, index) => {
           return (
             <li className="search__item" key={book.title + index}>
-              <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
+              <a
+                className="search__item-link"
+                href="#ref"
+                onClick={() => {
+                  showModal(book.id);
+                  onSearchChange('');
+                }}
+              >
                 <p className="search__item-title">{book.title}</p>
                 <p className="search__item-author">{book.author}</p>
                 <ArrowIcon className="search__item-icon" />
@@ -58,7 +65,14 @@ const Search = (props: {
         searchListData.map((book, index) => {
           return (
             <li className="search__item" key={book.title + index}>
-              <a className="search__item-link" href="#ref" onClick={() => showModal(book.id)}>
+              <a
+                className="search__item-link"
+                href="#ref"
+                onClick={() => {
+                  showModal(book.id);
+                  onSearchChange('');
+                }}
+              >
                 <img
                   className="search__item-image "
                   src={`images/${book.image}-1.jpg`}
@@ -112,9 +126,9 @@ const Search = (props: {
 
 const mapStateToProps = (state) => {
   return {
-    booksData: state.books,
-    searchValue: state.searchValue,
-    isSearching: state.isSearching,
+    booksData: state.default.books,
+    searchValue: state.search.searchValue,
+    isSearching: state.search.isSearching,
   };
 };
 

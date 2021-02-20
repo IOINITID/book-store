@@ -25,8 +25,8 @@ const MenuList = (props: IMenuList) => {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteQuantity: state.favoriteQuantity,
-    cartQuantity: state.cartQuantity,
+    favoriteQuantity: state.default.favoriteQuantity,
+    cartQuantity: state.default.cartQuantity,
   };
 };
 

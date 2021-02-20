@@ -4,17 +4,19 @@ import BookCover from '../book-cover/book-cover';
 import BookInfo from '../book-info/book-info';
 import { IBook } from '../../interfaces';
 import { connect } from 'react-redux';
-import { showModalAction } from '../../actions';
+import { onSearchChangeAction, showModalAction } from '../../actions';
 
-const Book = (props: { book: IBook; showModal: (id) => void }) => {
+const Book = (props: { book: IBook; showModal: (id) => void; onSearchChange: (value) => void }) => {
   const {
     book: { id, title, author, image, rating, price, genres },
     showModal,
+    onSearchChange,
   } = props;
 
   const onBookClick = (evt) => {
     evt.preventDefault();
     showModal(id);
+    onSearchChange('');
   };
 
   return (
@@ -28,6 +30,7 @@ const Book = (props: { book: IBook; showModal: (id) => void }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     showModal: (id) => dispatch(showModalAction(id)),
+    onSearchChange: (value) => dispatch(onSearchChangeAction(value)),
   };
 };
 

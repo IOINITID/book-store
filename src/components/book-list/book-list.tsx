@@ -56,7 +56,7 @@ const BookList = (props: IBookList) => {
 
 const mapStateToProps = (state) => {
   return {
-    booksData: state.books,
+    booksData: state.default.books,
   };
 };
 

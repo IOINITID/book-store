@@ -55,8 +55,8 @@ const Cart = (props: {
 
 const mapStateToProps = (state) => {
   return {
-    cartBooks: state.cartBooks,
-    cartTotalPrice: state.cartTotalPrice,
+    cartBooks: state.default.cartBooks,
+    cartTotalPrice: state.default.cartTotalPrice,
   };
 };
 
