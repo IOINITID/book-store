@@ -14,7 +14,10 @@ module.exports = {
     contentBase: outputPath,
     open: true,
     inline: true,
-    port: 1337,
+    port: 3000,
+    hot: true,
+    host: '0.0.0.0',
+    public: 'localhost:3000',
   },
   module: {
     rules: [
@@ -30,15 +33,44 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.module\.(css|scss)$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              // modules: {
-              //   localIdentName: '[name]__[local]--[hash:base64:5]',
-              // },
+              modules: {
+                localIdentName: '[folder]__[local]--[hash:base64:5]',
+              },
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['autoprefixer']],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                outputStyle: 'compressed',
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(css|scss)$/,
+        exclude: /\.module\.(css|scss)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
               sourceMap: true,
             },
           },
