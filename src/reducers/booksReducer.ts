@@ -1,4 +1,4 @@
-import { ActionTypes } from '../utils/constants';
+import { ActionTypes } from '../actions/types';
 
 const defaultState = {
   books: [],

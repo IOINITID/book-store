@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Book from '../book/book';
 import './book-list.scss';
-import { booksUrl } from '../../utils/constants';
+import { BOOKS_URL } from '../../services';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/swiper.scss';
@@ -40,7 +40,7 @@ const BookList = (props: IBookList) => {
   const { books, loadBooks } = props;
 
   useEffect(() => {
-    fetch(booksUrl)
+    fetch(BOOKS_URL)
       .then((response) => response.json())
       .then((books) => loadBooks(books));
   }, []);
