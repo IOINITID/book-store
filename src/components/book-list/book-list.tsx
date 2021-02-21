@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { loadBooksAction } from '../../actions';
 import { IRootState } from '../../store';
 import { Dispatch } from 'redux';
+import axios from 'axios';
 
 SwiperCore.use([Navigation]);
 
@@ -46,9 +47,7 @@ const BookList = (props: IBookList) => {
   const { books, loadBooks } = props;
 
   useEffect(() => {
-    fetch(BOOKS_URL)
-      .then((response) => response.json())
-      .then((books) => loadBooks(books));
+    axios.get(BOOKS_URL).then((response) => loadBooks(response.data));
   }, []);
 
   console.log('Список книг:', books);
