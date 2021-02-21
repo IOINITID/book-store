@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Cart from '../../components/cart/cart';
 
 const CartPage = () => {
   return (
-    <Fragment>
+    <main className="main">
       <Cart />
-    </Fragment>
+    </main>
   );
 };
 

@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Banner from '../../components/banner/banner';
 import BookList from '../../components/book-list/book-list';
 
 const MainPage = () => {
   return (
-    <Fragment>
+    <main className="main">
       <Banner />
       <div className="container">
         <div className="app__container">
@@ -12,7 +12,7 @@ const MainPage = () => {
         </div>
         <BookList />
       </div>
-    </Fragment>
+    </main>
   );
 };
 

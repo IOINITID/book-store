@@ -17,6 +17,7 @@ module.exports = {
     port: 3000,
     host: '0.0.0.0',
     public: 'localhost:3000',
+    progress: true,
   },
   module: {
     rules: [
