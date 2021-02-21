@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Book from '../book/book';
 import './book-list.scss';
 import { BOOKS_URL } from '../../services';
@@ -9,6 +9,7 @@ import ArrowIcon from '../../assets/images/arrow-icon.svg';
 import { connect } from 'react-redux';
 import { loadBooksAction } from '../../actions';
 import { IRootState } from '../../store';
+import { Dispatch } from 'redux';
 
 SwiperCore.use([Navigation]);
 
@@ -97,9 +98,9 @@ const mapStateToProps = (state: IRootState): IBookListStateProps => {
   };
 };
 
-const mapDispatchToProps = (dispatch): IBookListDispatchProps => {
+const mapDispatchToProps = (dispatch: Dispatch): IBookListDispatchProps => {
   return {
-    loadBooks: (books: IBook[]) => dispatch(loadBooksAction(books)),
+    loadBooks: (books) => dispatch(loadBooksAction(books)),
   };
 };
 
