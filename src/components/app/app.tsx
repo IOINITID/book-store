@@ -1,5 +1,4 @@
 import React from 'react';
-import './app.scss';
 import { connect } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { RoutePaths } from '../../routes';
@@ -8,13 +7,27 @@ import MainPage from '../../pages/main/main';
 import CartPage from '../../pages/cart/cart';
 import Modal from '../modal/modal';
 
-interface IApp {
-  modalData: boolean;
+interface IBook {
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
 }
 
-const App = (props: IApp) => {
-  const { modalData } = props;
+interface IApp {
+  modalData: IBook[];
+}
 
+const App = ({ modalData }: IApp) => {
   return (
     <HashRouter>
       <Header />

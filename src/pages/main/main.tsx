@@ -1,4 +1,5 @@
 import React from 'react';
+import './main.scss';
 import Banner from '../../components/banner/banner';
 import BookList from '../../components/book-list/book-list';
 
