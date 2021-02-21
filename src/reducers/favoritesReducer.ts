@@ -1,10 +1,39 @@
 import { ActionTypes } from '../actions/types';
 
-const defaultState = {
+interface IBook {
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
+  favorite?: boolean;
+}
+
+interface IFavoriteState {
+  quantity: number;
+}
+
+interface IToggleFavoriteAction {
+  type: ActionTypes.TOGGLE_FAVORITE;
+  payload: {
+    id: string;
+    books: IBook[];
+  };
+}
+
+const initialState = {
   quantity: 0,
 };
 
-const favoritesReducer = (state = defaultState, action) => {
+const favoritesReducer = (state: IFavoriteState = initialState, action: IToggleFavoriteAction): IFavoriteState => {
   switch (action.type) {
     case ActionTypes.TOGGLE_FAVORITE:
       return {

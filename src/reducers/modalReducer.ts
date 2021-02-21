@@ -1,10 +1,45 @@
 import { ActionTypes } from '../actions/types';
 
-const defaultState = {
+interface IBook {
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
+  favorite?: boolean;
+}
+
+interface IModalState {
+  modalData: IBook | null;
+}
+
+interface IShowModalAction {
+  type: ActionTypes.SHOW_MODAL;
+  payload: {
+    id: string;
+    books: IBook[];
+  };
+}
+
+interface ICloseModalAction {
+  type: ActionTypes.CLOSE_MODAL;
+}
+
+type IModalAction = IShowModalAction | ICloseModalAction;
+
+const initialState = {
   modalData: null,
 };
 
-const modalReducer = (state = defaultState, action) => {
+const modalReducer = (state: IModalState = initialState, action: IModalAction): IModalState => {
   switch (action.type) {
     case ActionTypes.SHOW_MODAL:
       return {

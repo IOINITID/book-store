@@ -8,7 +8,6 @@ import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
 import { connect } from 'react-redux';
 import { loadBooksAction } from '../../actions';
-// import { IBookList } from '../../interfaces';
 
 SwiperCore.use([Navigation]);
 
@@ -26,9 +25,6 @@ interface IBook {
   price: number;
   genres: string[];
   description: string;
-  favorite?: boolean;
-  cart?: boolean;
-  quantity?: number;
 }
 
 interface IBookList {

@@ -1,6 +1,6 @@
 import { ActionTypes } from '../actions/types';
 
-const defaultState = {
+const initialState = {
   cartBooks: [],
   quantity: 0,
   price: 0,
@@ -59,7 +59,7 @@ const updateOrder = (cartBooks, books, bookId, value) => {
   };
 };
 
-const cartReducer = (state = defaultState, action) => {
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART:
       return {
