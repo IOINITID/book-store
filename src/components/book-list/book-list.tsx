@@ -37,7 +37,7 @@ interface IBookListStateProps {
 }
 
 interface IBookListDispatchProps {
-  loadBooks: (books) => void;
+  loadBooks: (books: IBook[]) => void;
 }
 
 type IBookList = IBookListStateProps & IBookListDispatchProps;
@@ -100,7 +100,7 @@ const mapStateToProps = (state: IRootState): IBookListStateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch): IBookListDispatchProps => {
   return {
-    loadBooks: (books) => dispatch(loadBooksAction(books)),
+    loadBooks: (books: IBook[]) => dispatch(loadBooksAction(books)),
   };
 };
 
