@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './cart.scss';
 import { connect } from 'react-redux';
-import { addToCartAction, removeFromCartAction } from '../../actions';
+import { addToCartAction, removeFromCartAction, deleteFromCartAction } from '../../actions';
 import { IBook } from '../../interfaces';
 import DeleteIcon from '../../assets/images/delete-icon.svg';
 import MinusIcon from '../../assets/images/minus-icon.svg';
@@ -11,10 +11,11 @@ const Cart = (props: {
   cartBooks: IBook[];
   addToCart: (id, books) => void;
   removeFromCart: (id, books) => void;
+  deleteFromCart: (id, books) => void;
   cartTotalPrice: number;
   books: [];
 }) => {
-  const { cartBooks, addToCart, removeFromCart, cartTotalPrice, books } = props;
+  const { cartBooks, addToCart, removeFromCart, deleteFromCart, cartTotalPrice, books } = props;
 
   return (
     <div className="cart__page">
@@ -28,7 +29,12 @@ const Cart = (props: {
               <p className="cart__title">{book.title}</p>
               <p className="cart__author">{book.author}</p>
               <div className="cart__controls">
-                <button className="cart__button" type="button" onClick={() => removeFromCart(book.id, books)}>
+                <button
+                  className="cart__button"
+                  type="button"
+                  onClick={() => removeFromCart(book.id, books)}
+                  disabled={book.quantity === 1}
+                >
                   <MinusIcon />
                 </button>
                 <span className="cart__quantity">{book.quantity}</span>
@@ -37,7 +43,7 @@ const Cart = (props: {
                 </button>
               </div>
               <p className="cart__price">{book.price} ₽</p>
-              <button className="cart__remove" type="button">
+              <button className="cart__remove" type="button" onClick={() => deleteFromCart(book.id, books)}>
                 <DeleteIcon />
               </button>
             </li>
@@ -66,6 +72,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id, books) => dispatch(addToCartAction(id, books)),
     removeFromCart: (id, books) => dispatch(removeFromCartAction(id, books)),
+    deleteFromCart: (id, books) => dispatch(deleteFromCartAction(id, books)),
   };
 };
 

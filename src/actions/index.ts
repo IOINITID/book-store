@@ -1,7 +1,7 @@
 import { loadBooksAction } from './booksActions';
 import { showModalAction, closeModalAction } from './modalActions';
 import { toggleFavoriteAction } from './favoriteActions';
-import { addToCartAction, removeFromCartAction } from './cartActions';
+import { addToCartAction, removeFromCartAction, deleteFromCartAction } from './cartActions';
 import { searchChangeAction } from './searchActions';
 
 export {
@@ -11,5 +11,6 @@ export {
   toggleFavoriteAction,
   addToCartAction,
   removeFromCartAction,
+  deleteFromCartAction,
   searchChangeAction,
 };

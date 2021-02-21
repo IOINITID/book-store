@@ -14,4 +14,11 @@ const removeFromCartAction = (id, books) => {
   };
 };
 
-export { addToCartAction, removeFromCartAction };
+const deleteFromCartAction = (id, books) => {
+  return {
+    type: ActionTypes.DELETE_FROM_CART,
+    payload: { id, books },
+  };
+};
+
+export { addToCartAction, removeFromCartAction, deleteFromCartAction };
