@@ -4,4 +4,6 @@ import { rootReducer } from '../reducers';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
+export type IRootState = ReturnType<typeof rootReducer>;
+
 export default store;

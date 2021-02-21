@@ -1,5 +1,56 @@
 import { ActionTypes } from '../actions/types';
 
+interface IBook {
+  id: string;
+  title: string;
+  author: string;
+  publisher: string;
+  release: number;
+  pages: number;
+  cover: string;
+  age: number;
+  image: string;
+  rating: number;
+  price: number;
+  genres: string[];
+  description: string;
+  favorite?: boolean;
+  quantity?: number;
+  totalPrice?: number;
+}
+
+interface ICartState {
+  cartBooks: IBook[];
+  quantity: number;
+  price: number;
+}
+
+interface IAddToCartACtion {
+  type: ActionTypes.ADD_TO_CART;
+  payload: {
+    id: string;
+    books: IBook[];
+  };
+}
+
+interface IRemoveFromCartAction {
+  type: ActionTypes.REMOVE_FROM_CART;
+  payload: {
+    id: string;
+    books: IBook[];
+  };
+}
+
+interface IDeleteFromCartAction {
+  type: ActionTypes.DELETE_FROM_CART;
+  payload: {
+    id: string;
+    books: IBook[];
+  };
+}
+
+type ICartAction = IAddToCartACtion | IRemoveFromCartAction | IDeleteFromCartAction;
+
 const initialState = {
   cartBooks: [],
   quantity: 0,
@@ -59,7 +110,7 @@ const updateOrder = (cartBooks, books, bookId, value) => {
   };
 };
 
-const cartReducer = (state = initialState, action) => {
+const cartReducer = (state: ICartState = initialState, action: ICartAction): ICartState => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART:
       return {

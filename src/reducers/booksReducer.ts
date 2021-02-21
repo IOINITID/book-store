@@ -14,10 +14,13 @@ interface IBook {
   price: number;
   genres: string[];
   description: string;
+  favorite?: boolean;
+  quantity?: number;
+  totalPrice?: number;
 }
 
 interface IBooksState {
-  books: IBook[];
+  books: IBook[] | [];
 }
 
 interface ILoadBooksAction {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import Book from '../book/book';
 import './book-list.scss';
 import { BOOKS_URL } from '../../services';
@@ -8,6 +8,7 @@ import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
 import { connect } from 'react-redux';
 import { loadBooksAction } from '../../actions';
+import { IRootState } from '../../store';
 
 SwiperCore.use([Navigation]);
 
@@ -25,12 +26,20 @@ interface IBook {
   price: number;
   genres: string[];
   description: string;
+  favorite?: boolean;
+  quantity?: number;
+  totalPrice?: number;
 }
 
-interface IBookList {
+interface IBookListStateProps {
   books: IBook[];
+}
+
+interface IBookListDispatchProps {
   loadBooks: (books) => void;
 }
+
+type IBookList = IBookListStateProps & IBookListDispatchProps;
 
 const BookList = (props: IBookList) => {
   const { books, loadBooks } = props;
@@ -82,15 +91,15 @@ const BookList = (props: IBookList) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: IRootState): IBookListStateProps => {
   return {
     books: state.books.books,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch): IBookListDispatchProps => {
   return {
-    loadBooks: (books) => dispatch(loadBooksAction(books)),
+    loadBooks: (books: IBook[]) => dispatch(loadBooksAction(books)),
   };
 };
 

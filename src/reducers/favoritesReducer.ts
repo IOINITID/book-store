@@ -15,6 +15,8 @@ interface IBook {
   genres: string[];
   description: string;
   favorite?: boolean;
+  quantity?: number;
+  totalPrice?: number;
 }
 
 interface IFavoriteState {
