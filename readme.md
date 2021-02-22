@@ -7,6 +7,20 @@
 
 ---
 
+**Превью:**
+
+---
+
+![Preview](preview.jpg 'Preview')
+
+---
+
+Сделано с ❤️
+
+> Дизайн: _[Волковая Виктория](https://www.behance.net/awwwewolf): "Awesome To-Do"_
+
+---
+
 **Папка с исходными файлами — `src/`.**
 
 - [contributing.md](contributing.md) — руководство по сборке проекта.
