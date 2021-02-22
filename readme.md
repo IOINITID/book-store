@@ -17,7 +17,7 @@
 
 Сделано с ❤️
 
-> Дизайн: _[Волковая Виктория](https://www.behance.net/awwwewolf): "Awesome To-Do"_
+> Дизайн: _[Волковая Виктория](https://www.behance.net/awwwewolf): "Book Store"_
 
 ---
 
