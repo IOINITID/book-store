@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import './modal.scss';
-import FavoriteModalIcon from '../../assets/images/favorite-modal-icon.svg';
 import CloseIcon from '../../assets/images/close-icon.svg';
 import { connect } from 'react-redux';
 import { addToCartAction, toggleFavoriteAction, closeModalAction } from '../../actions';
@@ -9,6 +8,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay, Navigation } from 'swiper';
 import 'swiper/swiper.scss';
 import ArrowIcon from '../../assets/images/arrow-icon.svg';
+
+import HeartOutlineIcon from '../../assets/images/heart-outline.svg';
+import HeartInlineIcon from '../../assets/images/heart-inline.svg';
 
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 
@@ -34,9 +36,10 @@ interface IModal {
   closeModal: () => void;
   toggleFavorite: (id, books) => void;
   addToCart: (id, books) => void;
+  favorite?: boolean;
 }
 
-const Modal = ({ modalData, books, closeModal, toggleFavorite, addToCart }: IModal) => {
+const Modal = ({ modalData, books, closeModal, toggleFavorite, addToCart, favorite }: IModal) => {
   const { id, title, image, author, publisher, release, pages, cover, age, price, genres, description } = modalData;
 
   const modalRef = useRef(null);
@@ -169,9 +172,9 @@ const Modal = ({ modalData, books, closeModal, toggleFavorite, addToCart }: IMod
             className="modal__favorite"
             type="button"
             title="Добавить в избранное"
-            onClick={() => toggleFavorite(id, books)}
+            onMouseDown={() => toggleFavorite(id, books)}
           >
-            <FavoriteModalIcon width="20" height="18" />
+            {favorite ? <HeartInlineIcon width="20" height="18" /> : <HeartOutlineIcon width="20" height="18" />}
           </button>
         </div>
       </div>
@@ -183,6 +186,7 @@ const mapStateToProps = (state) => {
   return {
     modalData: state.modal.modalData,
     books: state.books.books,
+    favorite: state.modal.modalData.favorite,
   };
 };
 
