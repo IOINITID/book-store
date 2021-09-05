@@ -12,6 +12,7 @@
     "url": "git+https://github.com/IOINITID/book-store.git"
   },
   "keywords": [
+    "JavaScript",
     "TypeScript",
     "React",
     "Redux",
