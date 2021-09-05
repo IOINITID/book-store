@@ -2,12 +2,32 @@
   "name": "book-store",
   "version": "1.0.0",
   "private": true,
-  "description": "Book Store application.",
-  "license": "MIT",
+  "description": "Book Store - book purchase application.",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IOINITID/book-store.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "React",
+    "Redux",
+    "Styled-Components",
+    "CSS-Modules",
+    "Webpack",
+    "Swiper",
+    "Book",
+    "Store"
+  ],
+  "author": "Igor Orishchenko <ioinitid@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IOINITID/book-store/issues"
+  },
+  "homepage": "https://github.com/IOINITID/book-store#readme",
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",

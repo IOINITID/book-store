@@ -1,13 +1,14 @@
-**Book Store**
+Project name: **Book Store**
+
 [![Build Status](https://travis-ci.com/IOINITID/book-store.svg?branch=master)](https://travis-ci.com/IOINITID/book-store)
 
 ---
 
-Главная страница сайта: 🖥️ https://ioinitid.github.io/book-store/index.html
+Main page: 🖥️ https://ioinitid.github.io/book-store/
 
 ---
 
-**Превью:**
+**Preview:**
 
 ---
 
@@ -15,14 +16,14 @@
 
 ---
 
-Сделано с ❤️
+Made with ❤️
 
-> Дизайн: _[Волковая Виктория](https://www.behance.net/awwwewolf): "Book Store"_
+> Designed by: _[Волковая Виктория](https://www.behance.net/awwwewolf): "Book Store"_
 
 ---
 
-**Папка с исходными файлами — `src/`.**
+**Source files folder — `src/`.**
 
-- [contributing.md](contributing.md) — руководство по сборке проекта.
+- [contributing.md](contributing.md) — project build guide.
 
 ---
